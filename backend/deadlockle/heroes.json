@@ -1,0 +1,233 @@
+[
+    {
+        "model": "api.hero",
+        "pk": 1,
+        "fields": {
+            "name": "Abrams",
+            "gender": "M",
+            "type": "Tank",
+            "release_year": 2024,
+            "image": "heroes/abrams.jpg"
+        }
+    },
+    {
+        "model": "api.hero",
+        "pk": 2,
+        "fields": {
+            "name": "Bebop",
+            "gender": "M",
+            "type": "Support",
+            "release_year": 2024,
+            "image": "heroes/bebop.jpg"
+        }
+    },
+    {
+        "model": "api.hero",
+        "pk": 3,
+        "fields": {
+            "name": "Dynamo",
+            "gender": "F",
+            "type": "Damage",
+            "release_year": 2024,
+            "image": "heroes/dynamo.jpg"
+        }
+    },
+    {
+        "model": "api.hero",
+        "pk": 4,
+        "fields": {
+            "name": "Grey Talon",
+            "gender": "M",
+            "type": "Tank",
+            "release_year": 2024,
+            "image": "heroes/grey_talon.jpg"
+        }
+    },
+    {
+        "model": "api.hero",
+        "pk": 5,
+        "fields": {
+            "name": "Haze",
+            "gender": "F",
+            "type": "Damage",
+            "release_year": 2024,
+            "image": "heroes/haze.jpg"
+        }
+    },
+    {
+        "model": "api.hero",
+        "pk": 6,
+        "fields": {
+            "name": "Infernus",
+            "gender": "M",
+            "type": "Damage",
+            "release_year": 2024,
+            "image": "heroes/infernus.jpg"
+        }
+    },
+    {
+        "model": "api.hero",
+        "pk": 7,
+        "fields": {
+            "name": "Ivy",
+            "gender": "F",
+            "type": "Support",
+            "release_year": 2024,
+            "image": "heroes/ivy.jpg"
+        }
+    },
+    {
+        "model": "api.hero",
+        "pk": 8,
+        "fields": {
+            "name": "Kelvin",
+            "gender": "M",
+            "type": "Tank",
+            "release_year": 2024,
+            "image": "heroes/kelvin.jpg"
+        }
+    },
+    {
+        "model": "api.hero",
+        "pk": 9,
+        "fields": {
+            "name": "Lady Geist",
+            "gender": "F",
+            "type": "Support",
+            "release_year": 2024,
+            "image": "heroes/lady_geist.jpg"
+        }
+    },
+    {
+        "model": "api.hero",
+        "pk": 10,
+        "fields": {
+            "name": "Lash",
+            "gender": "M",
+            "type": "Damage",
+            "release_year": 2024,
+            "image": "heroes/lash.jpg"
+        }
+    },
+    {
+        "model": "api.hero",
+        "pk": 11,
+        "fields": {
+            "name": "McGinnis",
+            "gender": "M",
+            "type": "Tank",
+            "release_year": 2024,
+            "image": "heroes/mcginnis.jpg"
+        }
+    },
+    {
+        "model": "api.hero",
+        "pk": 12,
+        "fields": {
+            "name": "Mo & Krill",
+            "gender": "F",
+            "type": "Support",
+            "release_year": 2024,
+            "image": "heroes/mo_krill.jpg"
+        }
+    },
+    {
+        "model": "api.hero",
+        "pk": 13,
+        "fields": {
+            "name": "Paradox",
+            "gender": "M",
+            "type": "Damage",
+            "release_year": 2024,
+            "image": "heroes/paradox.jpg"
+        }
+    },
+    {
+        "model": "api.hero",
+        "pk": 14,
+        "fields": {
+            "name": "Pocket",
+            "gender": "F",
+            "type": "Support",
+            "release_year": 2024,
+            "image": "heroes/pocket.jpg"
+        }
+    },
+    {
+        "model": "api.hero",
+        "pk": 15,
+        "fields": {
+            "name": "Seven",
+            "gender": "M",
+            "type": "Damage",
+            "release_year": 2024,
+            "image": "heroes/seven.jpg"
+        }
+    },
+    {
+        "model": "api.hero",
+        "pk": 16,
+        "fields": {
+            "name": "Shiv",
+            "gender": "F",
+            "type": "Damage",
+            "release_year": 2024,
+            "image": "heroes/shiv.jpg"
+        }
+    },
+    {
+        "model": "api.hero",
+        "pk": 17,
+        "fields": {
+            "name": "Vindicta",
+            "gender": "M",
+            "type": "Tank",
+            "release_year": 2024,
+            "image": "heroes/vindicta.jpg"
+        }
+    },
+    {
+        "model": "api.hero",
+        "pk": 18,
+        "fields": {
+            "name": "Viscous",
+            "gender": "F",
+            "type": "Support",
+            "release_year": 2024,
+            "image": "heroes/viscous.jpg"
+        }
+    },
+    {
+        "model": "api.hero",
+        "pk": 19,
+        "fields": {
+            "name": "Warden",
+            "gender": "M",
+            "type": "Tank",
+            "release_year": 2024,
+            "image": "heroes/warden.jpg"
+        }
+    },
+    {
+        "model": "api.hero",
+        "pk": 20,
+        "fields": {
+            "name": "Wraith",
+            "gender": "F",
+            "type": "Damage",
+            "release_year": 2024,
+            "image": "heroes/wraith.jpg"
+        }
+    },
+    {
+        "model": "api.hero",
+        "pk": 21,
+        "fields": {
+            "name": "Yamato",
+            "gender": "M",
+            "type": "Tank",
+            "release_year": 2024,
+            "image": "heroes/yamato.jpg"
+        }
+    }
+]
