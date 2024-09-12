@@ -6,15 +6,12 @@ const slideIn = keyframes`
     0% {
         opacity: 0;
         transform: translateY(-50px);
-        visibility: hidden;
-    }
-    1% {
-        visibility: visible;
+        visibility: hidden; /* Hide initially */
     }
     100% {
         opacity: 1;
         transform: translateY(0);
-        visibility: visible;
+        visibility: visible; /* Make visible after animation */
     }
 `;
 
@@ -34,10 +31,9 @@ function TileComponent(props: { label: string, backgroundColor?: string, backgro
                 justifyContent: 'center',
                 border: '2px solid black',
                 margin: '0 5px',
-                visibility: 'hidden',
                 boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.3)',
+                visibility: 'hidden', /* Ensure visibility is hidden initially */
                 animation: css`${slideIn} 0.5s ease-out ${props.delay}s forwards`,
-                animationFillMode: 'forwards',
             }}
         >
             <Typography
@@ -53,8 +49,6 @@ function TileComponent(props: { label: string, backgroundColor?: string, backgro
 };
 
 export default function TileContainer(props: { tiles: { label: string, backgroundColor?: string, backgroundImage?: string }[] }) {
-    // Reverse tiles to maintain correct order for animation
-
     return (
         <Box
             sx={{
@@ -70,7 +64,7 @@ export default function TileContainer(props: { tiles: { label: string, backgroun
                     label={tile.label}
                     backgroundColor={tile.backgroundColor}
                     backgroundImage={tile.backgroundImage}
-                    delay={index * 0.2} // Apply delay based on index in reversed array
+                    delay={index * 0.2} // Apply delay based on index
                 />
             ))}
         </Box>

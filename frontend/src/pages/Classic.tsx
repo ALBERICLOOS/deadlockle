@@ -4,6 +4,20 @@ import SelectHero from "../components/SelectHero";
 import Box from "@mui/material/Box";
 import TileContainer from "../components/Tile";
 
+const LOCAL_STORAGE_KEY_HEROES = 'heroes';
+const LOCAL_STORAGE_KEY_DATE = 'date';
+
+function checkAndClearLocalStorage() {
+    const savedDate = localStorage.getItem(LOCAL_STORAGE_KEY_DATE);
+    const currentDate = new Date().toISOString().split('T')[0]; // Get current date in YYYY-MM-DD format
+
+    if (savedDate !== currentDate) {
+        // Clear local storage if the saved date is different from the current date
+        localStorage.removeItem(LOCAL_STORAGE_KEY_HEROES);
+        localStorage.setItem(LOCAL_STORAGE_KEY_DATE, currentDate); // Update the saved date to the current date
+    }
+}
+
 export default function Classic() {
     const [heroes, setHeroes] = React.useState<Hero[]>([]);
     const [selectedHero, setSelectedHero] = React.useState<Hero | null>(null);
@@ -11,8 +25,30 @@ export default function Classic() {
     const [resetKey, setResetKey] = React.useState<string>('initial');  // Key to reset Autocomplete
 
     React.useEffect(() => {
-        fetchHeroes().then(heroes => setHeroes(heroes));
+        const fetchAndSetHeroes = async () => {
+
+            checkAndClearLocalStorage();
+            // Fetch heroes from the API
+            const heroes = await fetchHeroes();
+            setHeroes(heroes);
+
+            // Get saved heroes from local storage
+            const savedHeroes = localStorage.getItem(LOCAL_STORAGE_KEY_HEROES);
+            if (savedHeroes) {
+                const savedGuessedHeros = JSON.parse(savedHeroes);
+                setGuessedHeros(savedGuessedHeros);
+
+                // Filter out heroes that are already guessed
+                const updatedHeroes = heroes.filter(hero =>
+                    !savedGuessedHeros.some((guess: Guess) => guess.hero_id === hero.id)
+                );
+                setHeroes(updatedHeroes);
+            }
+        };
+
+        fetchAndSetHeroes();
     }, []);
+
 
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
@@ -26,22 +62,29 @@ export default function Classic() {
                 console.log("Guess Response:", guess);
                 console.log("Hero Data:", hero);
 
-                setGuessedHeros([
-                    {
-                        hero_id: hero.id,
-                        name: hero.name,
-                        name_guess: guess.name,
-                        image: hero.image,
-                        gender: hero.gender,
-                        gender_guess: guess.gender,
-                        type: hero.type,
-                        type_guess: guess.type,
-                        release_year: hero.release_year,
-                        release_year_guess: guess.release_year,
-                        total_right_guesses: guess.total_right_guesses,
-                    },
-                    ...guessedHeros // Add new guess to the front
-                ]);
+                setGuessedHeros(prevGuessedHeros => {
+                    const updatedGuessedHeros = [
+                        {
+                            hero_id: hero.id,
+                            name: hero.name,
+                            name_guess: guess.name,
+                            image: hero.image,
+                            gender: hero.gender,
+                            gender_guess: guess.gender,
+                            type: hero.type,
+                            type_guess: guess.type,
+                            release_year: hero.release_year,
+                            release_year_guess: guess.release_year,
+                            total_right_guesses: guess.total_right_guesses,
+                        },
+                        ...prevGuessedHeros // Add new guess to the front
+                    ];
+
+                    // Save the updated guessed heroes to local storage
+                    localStorage.setItem(LOCAL_STORAGE_KEY_HEROES, JSON.stringify(updatedGuessedHeros));
+
+                    return updatedGuessedHeros;
+                });
 
                 const deleteIndex = heroes.findIndex((hero) => hero.id === selectedHero.id);
                 if (deleteIndex > -1) {
@@ -50,9 +93,9 @@ export default function Classic() {
                     setHeroes(newHeroes);
                 }
 
+                setResetKey(Date.now().toString());  // Change the key to trigger re-render
+                setSelectedHero(null);
             }
-            setResetKey(Date.now().toString());  // Change the key to trigger re-render
-            setSelectedHero(null);
         }
     }
 
