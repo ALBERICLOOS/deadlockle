@@ -14,6 +14,7 @@ export type Hero = {
 }
 
 export type GuessResponse = {
+    name: boolean,
     guess: boolean,
     gender : boolean,
     type : boolean,
@@ -23,8 +24,9 @@ export type GuessResponse = {
 
 export type Guess = {
     hero_id: number;
-    name: string;
     image: string;
+    name: string;
+    name_guess: boolean;
     gender: "M" | "F" | "X";
     gender_guess: boolean;
     type: "Tank" | "DPS" | "Support";

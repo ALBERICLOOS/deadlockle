@@ -30,6 +30,7 @@ export default function Classic() {
                     {
                         hero_id: hero.id,
                         name: hero.name,
+                        name_guess: guess.name,
                         image: hero.image,
                         gender: hero.gender,
                         gender_guess: guess.gender,
@@ -69,24 +70,36 @@ export default function Classic() {
                 flexDirection="column"
                 justifyContent="center"
                 alignItems="center"
-                minHeight="30vh"
+                height="30vh" // Sets height to 30% of viewport height
                 textAlign="center"
             >
                 <h1>Classic</h1>
                 <SelectHero heroes={heroes} handleSubmit={handleSubmit} setSelectedHero={setSelectedHero} resetKey={resetKey} />
             </Box>
-            {guessedHeros.map((guess, index) => (
-                <TileContainer
-                    key={guess.hero_id} // Use hero_id or another unique identifier as the key
-                    tiles={[
-                        { label: "", backgroundImage: guess.image },
-                        { label: guess.gender, backgroundColor: guess.gender_guess ? "green" : "red" },
-                        { label: guess.type, backgroundColor: guess.type_guess ? "green" : "red" },
-                        { label: guess.release_year.toString(), backgroundColor: guess.release_year_guess ? "green" : "red" },
-                    ]}
-                />
-            ))}
+
+            <Box
+                display="flex"
+                flexDirection="column"
+                justifyContent="flex-start" // Aligns items to the top
+                alignItems="center" // Centers items horizontally
+                flexGrow={1} // This will take up the remaining 70%
+                textAlign="center"
+            >
+                {guessedHeros.map((guess, index) => (
+                    <TileContainer
+                        key={guess.hero_id} // Use hero_id or another unique identifier as the key
+                        tiles={[
+                            { label: "", backgroundImage: guess.image },
+                            { label: guess.name, backgroundColor: guess.name_guess ? "green" : "red" },
+                            { label: guess.gender, backgroundColor: guess.gender_guess ? "green" : "red" },
+                            { label: guess.type, backgroundColor: guess.type_guess ? "green" : "red" },
+                            { label: guess.release_year.toString(), backgroundColor: guess.release_year_guess ? "green" : "red" },
+                        ]}
+                    />
+                ))}
+            </Box>
         </Box>
+
     );
 }
 

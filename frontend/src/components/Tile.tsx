@@ -5,11 +5,16 @@ import Box from "@mui/material/Box";
 const slideIn = keyframes`
     0% {
         opacity: 0;
-        transform: translateX(-20px);
+        transform: translateY(-50px);
+        visibility: hidden;
+    }
+    1% {
+        visibility: visible;
     }
     100% {
         opacity: 1;
-        transform: translateX(0);
+        transform: translateY(0);
+        visibility: visible;
     }
 `;
 
@@ -29,8 +34,10 @@ function TileComponent(props: { label: string, backgroundColor?: string, backgro
                 justifyContent: 'center',
                 border: '2px solid black',
                 margin: '0 5px',
+                visibility: 'hidden',
                 boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.3)',
                 animation: css`${slideIn} 0.5s ease-out ${props.delay}s forwards`,
+                animationFillMode: 'forwards',
             }}
         >
             <Typography
