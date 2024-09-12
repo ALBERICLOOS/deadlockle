@@ -46,6 +46,7 @@ class GuessHero(generics.UpdateAPIView):
                     return Response(
                         {
                          "guess": True,
+                         "name": guessed_hero.name == daily_hero_full.name,
                          "gender": guessed_hero.gender == daily_hero_full.gender,
                          "type": guessed_hero.type == daily_hero_full.type,
                          "release_year": guessed_hero.release_year == daily_hero_full.release_year,
@@ -55,6 +56,7 @@ class GuessHero(generics.UpdateAPIView):
                 return Response(
                     {
                         "guess": False,
+                        "name": guessed_hero.name == daily_hero_full.name,
                         "gender": guessed_hero.gender == daily_hero_full.gender,
                         "type": guessed_hero.type == daily_hero_full.type,
                         "release_year": guessed_hero.release_year == daily_hero_full.release_year,
