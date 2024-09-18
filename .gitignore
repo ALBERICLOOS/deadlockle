@@ -4,3 +4,4 @@ __pycache__/
 backend/deadlockle/db.sqlite3
 **/__pycache__/
 backend/.idea/
+backend/deadlockle/api/migrations/*.py
