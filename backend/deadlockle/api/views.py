@@ -1,21 +1,9 @@
-from random import choice
-
-from django.utils import timezone
 from rest_framework import generics, status
 from rest_framework.response import Response
 
-from .models import Hero, DailyHero
+from .helpers import get_or_create_daily_hero, get_or_create_daily_ability
+from .models import Hero, Ability
 from .serializers import HeroSerializer, GuessSerializer, HeroDetailSerializer
-
-
-def get_or_create_daily_hero():
-    today = timezone.now().date()
-    try:
-        daily_hero = DailyHero.objects.get(date=today)
-    except DailyHero.DoesNotExist:
-        hero = choice(Hero.objects.all())
-        daily_hero = DailyHero.objects.create(hero=hero, date=today)
-    return daily_hero
 
 
 class HeroList(generics.ListAPIView):
@@ -68,5 +56,32 @@ class GuessHero(generics.UpdateAPIView):
             return Response({"error": "Hero does not exist."}, status=status.HTTP_400_BAD_REQUEST)
 
 
+class GuessAbility(generics.UpdateAPIView):
+    serializer_class = GuessSerializer
+    http_method_names = ['post']
+
+    def post(self, request, *args, **kwargs):
+        try:
+            serializer = self.get_serializer(data=request.data)
+            if serializer.is_valid():
+                guessed_hero_id = serializer.validated_data['hero_id']
+                daily_ability = get_or_create_daily_ability()
+                real_hero_id = daily_ability.ability.hero.id
+                if guessed_hero_id.id == real_hero_id:
+                    daily_ability.amount_of_people += 1
+                    daily_ability.save()
+                    return Response(
+                        {
+                         "guess": True,
+                         }
+                        , status=status.HTTP_200_OK)
+                return Response(
+                    {
+                        "guess": False,
+                        }
+                        , status=status.HTTP_200_OK)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        except Ability.DoesNotExist:
+            return Response({"error": "Ability does not exist."}, status=status.HTTP_400_BAD_REQUEST)
 
 
