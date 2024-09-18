@@ -1,0 +1,122 @@
+[
+  {
+    "model": "api.ability",
+    "pk": 1,
+    "fields": {
+      "hero": 1,
+      "name": "Siphon Life",
+      "key": 1,
+      "image": "abilities/abrams/1.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 2,
+    "fields": {
+      "hero": 1,
+      "name": "Shoulder Charge",
+      "key": 2,
+      "image": "abilities/abrams/2.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 3,
+    "fields": {
+      "hero": 1,
+      "name": "Infernal Resilience",
+      "key": 3,
+      "image": "abilities/abrams/3.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 4,
+    "fields": {
+      "hero": 1,
+      "name": "Seismic Impact",
+      "key": 4,
+      "image": "abilities/abrams/4.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 5,
+    "fields": {
+      "hero": 2,
+      "name": "Exploding Uppercut",
+      "key": 1,
+      "image": "abilities/bebop/1.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 6,
+    "fields": {
+      "hero": 2,
+      "name": "Sticky Bomb",
+      "key": 2,
+      "image": "abilities/bebop/2.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 7,
+    "fields": {
+      "hero": 2,
+      "name": "Hook",
+      "key": 3,
+      "image": "abilities/bebop/3.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 8,
+    "fields": {
+      "hero": 2,
+      "name": "Hyper Beam",
+      "key": 4,
+      "image": "abilities/bebop/4.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 9,
+    "fields": {
+      "hero": 3,
+      "name": "Kinetic Pulse",
+      "key": 1,
+      "image": "abilities/dynamo/1.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 10,
+    "fields": {
+      "hero": 3,
+      "name": "Quantum Entanglement",
+      "key": 2,
+      "image": "abilities/dynamo/2.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 11,
+    "fields": {
+      "hero": 3,
+      "name": "Rejuvenation Aurora",
+      "key": 3,
+      "image": "abilities/dynamo/3.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 12,
+    "fields": {
+      "hero": 3,
+      "name": "Singularity",
+      "key": 4,
+      "image": "abilities/dynamo/4.jpg"
+    }
+  }
+]
