@@ -22,4 +22,11 @@ class DailyHero(models.Model):
         return f"{self.hero.name} - {self.date}"
 
 
+class Ability(models.Model):
+    hero = models.ForeignKey(Hero, on_delete=models.CASCADE)
+    name = models.CharField(max_length=50)
+    key = models.IntegerField()
+    image = models.ImageField(upload_to="abilities/", default="abilities/default.png")
 
+    def __str__(self):
+        return f"{self.name} - {self.hero.name}"
