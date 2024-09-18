@@ -1,3 +1,6 @@
-.idea
-
+.idea/
+.vscode/
+__pycache__/
+backend/deadlockle/db.sqlite3
 **/__pycache__/
+backend/.idea/
