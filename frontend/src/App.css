@@ -98,3 +98,8 @@
     display: block; /* Show on tablet and larger */
   }
 }
+
+.flip-emoji {
+  display: inline-block;
+  transform: scaleX(-1); /* Flips the emoji horizontally */
+}
