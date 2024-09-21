@@ -10,13 +10,13 @@ import {
     LOCAL_STORAGE_KEY_HEROES,
     DEBUG,
     red,
-    green
+    green, LOCAL_STORAGE_ABILITY_SUCCESS
 } from "../constants";
 
 
 export function checkAndClearLocalStorage(key: string){
     const savedDate = localStorage.getItem(LOCAL_STORAGE_KEY_DATE);
-    const currentDate = new Date().toISOString().split('T')[0]; // Get current date in YYYY-MM-DD format
+    const currentDate = new Date().toISOString().split('T')[0];
 
     if (savedDate !== currentDate) {
         if (key === LOCAL_STORAGE_KEY_HEROES){
@@ -25,7 +25,8 @@ export function checkAndClearLocalStorage(key: string){
         else if (key === LOCAL_STORAGE_KEY_ABILITIES){
             localStorage.removeItem(LOCAL_STORAGE_KEY_ABILITIES);
         }
-        localStorage.setItem(LOCAL_STORAGE_KEY_DATE, currentDate); // Update the saved date to the current date
+        localStorage.setItem(LOCAL_STORAGE_KEY_DATE, currentDate);
+        localStorage.removeItem(LOCAL_STORAGE_ABILITY_SUCCESS)
     }
 
     if (DEBUG) {
@@ -92,7 +93,6 @@ export default function Classic() {
                         ...prevGuessedHeros // Add new guess to the front
                     ];
 
-                    // Save the updated guessed heroes to local storage
                     localStorage.setItem(LOCAL_STORAGE_KEY_HEROES, JSON.stringify(updatedGuessedHeros));
 
                     return updatedGuessedHeros;

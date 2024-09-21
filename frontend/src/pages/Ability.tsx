@@ -5,14 +5,22 @@ import SelectHero from "../components/SelectHero";
 import {AbilityContainer} from "../components/Tile";
 import {checkAndClearLocalStorage} from "./Classic";
 import {fetchDailAbility, fetchHeroes, submitAbilityGuess} from "../api/Api";
-import {LOCAL_STORAGE_KEY_ABILITIES} from "../constants";
+import {LOCAL_STORAGE_ABILITY_SUCCESS, LOCAL_STORAGE_KEY_ABILITIES} from "../constants";
+/*
+LOCAL STORAGE:
+LOCAL_STORAGE_KEY_ABILITIES: holds a list of the guessed heroes
+LOCAL_STORAGE_KEY_DATE: holds the date of the last saved guess
+LOCAL_STORAGE_ABILITY_SUCCESS: holds if the guess was correct
+*/
+
 
 export default function Ability() {
     const [dailyAbility, setDailyAbility] = React.useState<DailyAbility | null>(null);
     const [heroes, setHeroes] = React.useState<Hero[]>([]);
     const [selectedHero, setSelectedHero] = React.useState<Hero | null>(null);
     const [guessedHeros, setGuessedHeros] = React.useState<AbilityGuess[]>([]);
-    const [resetKey, setResetKey] = React.useState<string>('initial');  // Key to reset Autocomplete
+    const [resetKey, setResetKey] = React.useState<string>('initial');
+    const [found, setFound] = React.useState<boolean>(false);
 
     React.useEffect(() => {
         const fetchAndSetDailyAbility = async () => {
@@ -38,6 +46,11 @@ export default function Ability() {
                 setDailyAbility(dailyAbility);
             }
 
+            const success = localStorage.getItem(LOCAL_STORAGE_ABILITY_SUCCESS);
+            if (success){
+                setFound(true);
+            }
+
         };
         fetchAndSetDailyAbility();
     }, []);
@@ -59,6 +72,11 @@ export default function Ability() {
                     localStorage.setItem(LOCAL_STORAGE_KEY_ABILITIES, JSON.stringify(updatedGuessedHeros));
                     return updatedGuessedHeros;
                 });
+
+                if (guess.guess){ // the guess is correct
+                    setFound(true);
+                    localStorage.setItem(LOCAL_STORAGE_ABILITY_SUCCESS, "true");
+                }
 
                 const deleteIndex = heroes.findIndex((hero) => hero.id === selectedHero.id);
                 if (deleteIndex > -1) {
@@ -95,7 +113,12 @@ export default function Ability() {
                     src={"data:image/jpeg;base64," + dailyAbility?.image_base64}
                     className="image-style"
                 />
-                <SelectHero heroes={heroes} handleSubmit={handleSubmit} setSelectedHero={setSelectedHero} resetKey={resetKey} />
+                {!found
+                ?
+                    <SelectHero heroes={heroes} handleSubmit={handleSubmit} setSelectedHero={setSelectedHero} resetKey={resetKey}/>
+                :
+                    <h1>YOU HAVE FOUND THE CORRECT HERO!</h1>
+                }
             </Box>
             <Box
                 display="flex"
@@ -106,9 +129,7 @@ export default function Ability() {
                 textAlign="center"
             >
                 {guessedHeros.map((guess, index) => (
-                    <>
-                        <AbilityContainer key={guess.hero_id} image={guess.image} guess={guess.ability} name={guess.hero_name} guessCount={0} animate={index === 0} />
-                    </>
+                    <AbilityContainer key={guess.hero_id} image={guess.image} guess={guess.ability} name={guess.hero_name} guessCount={0} animate={index === 0} />
                 ))}
             </Box>
         </Box>
