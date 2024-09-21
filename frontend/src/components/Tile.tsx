@@ -16,7 +16,7 @@ const slideIn = keyframes`
     }
 `;
 
-export function TileComponent(props: { label: string, backgroundColor?: string, backgroundImage?: string, delay: number }) {
+export function TileComponent(props: { label: string, backgroundColor?: string, backgroundImage?: string, delay: number, fontColor?: string}) {
     return (
         <Box
             sx={{
@@ -39,7 +39,7 @@ export function TileComponent(props: { label: string, backgroundColor?: string, 
         >
             <Typography
                 variant="body1"
-                color="white"
+                color={props.fontColor ? props.fontColor : 'white'}
                 fontWeight="bold"
                 textAlign="center"
             >
@@ -49,7 +49,7 @@ export function TileComponent(props: { label: string, backgroundColor?: string, 
     );
 };
 
-export default function TileContainer(props: { tiles: { label: string, backgroundColor?: string, backgroundImage?: string }[] }) {
+export default function TileContainer(props: { tiles: { label: string, backgroundColor?: string, backgroundImage?: string, fontColor?: string}[] }) {
     return (
         <Box
             sx={{
@@ -66,6 +66,7 @@ export default function TileContainer(props: { tiles: { label: string, backgroun
                     backgroundColor={tile.backgroundColor}
                     backgroundImage={tile.backgroundImage}
                     delay={index * 0.2} // Apply delay based on index
+                    fontColor={tile.fontColor}
                 />
             ))}
         </Box>
