@@ -3,6 +3,7 @@ import './App.css'
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Home from "./pages/Home";
 import Classic from "./pages/Classic";
+import Ability from "./pages/Ability";
 
 export default function App() {
     return (
@@ -10,6 +11,7 @@ export default function App() {
             <Routes>
                 <Route index element={<Home />} />
                 <Route path="classic" element={<Classic />} />
+                <Route path="ability" element={<Ability/>} />
             </Routes>
         </BrowserRouter>
     );
