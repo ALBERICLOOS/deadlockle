@@ -4,7 +4,14 @@ import SelectHero from "../components/SelectHero";
 import Box from "@mui/material/Box";
 import TileContainer from "../components/Tile";
 import {fetchHero, fetchHeroes, submitHeroGuess} from "../api/Api";
-import {LOCAL_STORAGE_KEY_ABILITIES, LOCAL_STORAGE_KEY_DATE, LOCAL_STORAGE_KEY_HEROES, DEBUG} from "../constants";
+import {
+    LOCAL_STORAGE_KEY_ABILITIES,
+    LOCAL_STORAGE_KEY_DATE,
+    LOCAL_STORAGE_KEY_HEROES,
+    DEBUG,
+    red,
+    green
+} from "../constants";
 
 
 export function checkAndClearLocalStorage(key: string){
@@ -138,10 +145,10 @@ export default function Classic() {
                         key={guess.hero_id} // Use hero_id or another unique identifier as the key
                         tiles={[
                             { label: "", backgroundImage: guess.image },
-                            { label: guess.name, backgroundColor: guess.name_guess ? "green" : "red" },
-                            { label: guess.gender, backgroundColor: guess.gender_guess ? "green" : "red" },
-                            { label: guess.type, backgroundColor: guess.type_guess ? "green" : "red" },
-                            { label: guess.release_year.toString(), backgroundColor: guess.release_year_guess ? "green" : "red" },
+                            { label: guess.name, backgroundColor: guess.name_guess ? green : red },
+                            { label: guess.gender, backgroundColor: guess.gender_guess ? green : red },
+                            { label: guess.type, backgroundColor: guess.type_guess ? green : red },
+                            { label: guess.release_year.toString(), backgroundColor: guess.release_year_guess ? green : red },
                         ]}
                     />
                 ))}

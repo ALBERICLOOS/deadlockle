@@ -106,7 +106,9 @@ export default function Ability() {
                 textAlign="center"
             >
                 {guessedHeros.map((guess, index) => (
-                    <AbilityContainer key={guess.hero_id} image={guess.image} guess={guess.ability} name={guess.hero_name} guessCount={0} animate={index === 0} />
+                    <>
+                        <AbilityContainer key={guess.hero_id} image={guess.image} guess={guess.ability} name={guess.hero_name} guessCount={0} animate={index === 0} />
+                    </>
                 ))}
             </Box>
         </Box>

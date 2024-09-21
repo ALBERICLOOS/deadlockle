@@ -1,17 +1,18 @@
 import { css, keyframes } from '@emotion/react';
 import { Typography } from "@mui/material";
 import Box from "@mui/material/Box";
+import {green, red} from "../constants";
 
 const slideIn = keyframes`
     0% {
         opacity: 0;
         transform: translateY(-50px);
-        visibility: hidden; /* Hide initially */
+        visibility: hidden;
     }
     100% {
         opacity: 1;
         transform: translateY(0);
-        visibility: visible; /* Make visible after animation */
+        visibility: visible;
     }
 `;
 
@@ -72,22 +73,12 @@ export default function TileContainer(props: { tiles: { label: string, backgroun
 }
 
 export function AbilityContainer(props: { image: string; name: string; guess: boolean; guessCount: number; animate: boolean }) {
-    const slideIn = keyframes`
-    0% {
-      opacity: 0;
-      transform: translateY(-50px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  `;
     return (
         <Box
             sx={{
                 marginBottom: 2,
                 position: 'relative',
-                backgroundColor: props.guess ? '#e74c3c' : '#2ecc71',
+                backgroundColor: props.guess ? green : red,
                 borderRadius: '10px',
                 display: 'flex',
                 flexDirection: 'column', // Stack image and text vertically
