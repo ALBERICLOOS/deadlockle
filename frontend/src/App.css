@@ -45,3 +45,56 @@
   margin-bottom: 30px;
   object-fit: cover;  /* Ensures the image covers the area without distortion */
 }
+.found-hero-heading {
+  color: #4CAF50;
+  font-weight: bold;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  transition: color 0.5s ease-in-out, transform 0.5s ease;
+  transform: scale(1);
+  padding: 0 20px;
+
+  /* Mobile-first font size */
+  font-size: 2rem;
+
+  margin: 10px; /* Adjust as needed */
+}
+
+/* For tablet-sized screens and above */
+@media (min-width: 600px) {
+  .found-hero-heading {
+    font-size: 2rem;
+  }
+}
+
+/* For desktop-sized screens */
+@media (min-width: 1024px) {
+  .found-hero-heading {
+    font-size: 2.5rem;
+  }
+}
+
+/* Add scale effect when the hero is found */
+.found-hero-heading.found {
+  transform: scale(1.1);
+}
+
+/* Hide the mobile version on larger screens */
+.desktop {
+  display: none; /* Hide on mobile */
+}
+
+.mobile {
+  display: block; /* Show on mobile */
+}
+
+/* Adjust visibility for larger screens */
+@media (min-width: 600px) {
+  .mobile {
+    display: none; /* Hide on tablet and larger */
+  }
+
+  .desktop {
+    display: block; /* Show on tablet and larger */
+  }
+}

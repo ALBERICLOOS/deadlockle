@@ -113,12 +113,23 @@ export default function Ability() {
                     src={"data:image/jpeg;base64," + dailyAbility?.image_base64}
                     className="image-style"
                 />
-                {!found
-                ?
-                    <SelectHero heroes={heroes} handleSubmit={handleSubmit} setSelectedHero={setSelectedHero} resetKey={resetKey}/>
-                :
-                    <h1>YOU HAVE FOUND THE CORRECT HERO!</h1>
-                }
+                {!found ? (
+                    <SelectHero
+                        heroes={heroes}
+                        handleSubmit={handleSubmit}
+                        setSelectedHero={setSelectedHero}
+                        resetKey={resetKey}
+                    />
+                ) : (
+                    <>
+                        <h1 className={`found-hero-heading ${found ? 'found' : ''} mobile`}>
+                            🎉 CORRECT HERO! 🎉
+                        </h1>
+                        <h1 className={`found-hero-heading ${found ? 'found' : ''} desktop`}>
+                            🎉 YOU HAVE FOUND THE CORRECT HERO! 🎉
+                        </h1>
+                    </>
+                )}
             </Box>
             <Box
                 display="flex"
