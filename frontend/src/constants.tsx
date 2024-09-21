@@ -5,6 +5,6 @@ export const LOCAL_STORAGE_ABILITY_SUCCESS = 'ability_success';
 export const LOCAL_STORAGE_HERO_SUCCESS = 'hero_success';
 
 
-export const DEBUG = false;
+export const DEBUG = true;
 export const green= '#2ecc71';
 export const red= '#e74c3c';
