@@ -1,9 +1,11 @@
-import {AbilityGuessResponse, DailyAbility, AbilityGuess, Hero, HeroDetail, HeroGuessResponse} from "../types/Types";
+import {DailyAbility, AbilityGuess, Hero} from "../types/Types";
 import React from "react";
 import Box from "@mui/material/Box";
 import SelectHero from "../components/SelectHero";
-import TileContainer, {AbilityContainer, TileComponent} from "../components/Tile";
-import {checkAndClearLocalStorage, fetchHeroes, LOCAL_STORAGE_KEY_ABILITIES} from "./Classic";
+import {AbilityContainer} from "../components/Tile";
+import {checkAndClearLocalStorage} from "./Classic";
+import {fetchDailAbility, fetchHeroes, submitAbilityGuess} from "../api/Api";
+import {LOCAL_STORAGE_KEY_ABILITIES} from "../constants";
 
 export default function Ability() {
     const [dailyAbility, setDailyAbility] = React.useState<DailyAbility | null>(null);
@@ -44,7 +46,7 @@ export default function Ability() {
         event.preventDefault();
         if (selectedHero){
             const [guess] = await Promise.all([
-                submitGuess(selectedHero),
+                submitAbilityGuess(selectedHero),
             ]);
             if (guess){
                 setGuessedHeros(prevGuessedHeros => {
@@ -119,31 +121,5 @@ export default function Ability() {
 }
 
 
-async function fetchDailAbility(): Promise<DailyAbility | null> {
-    try {
-        const response = await fetch(`http://127.0.0.1:8000/api/daily/ability/`);
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return await response.json() as DailyAbility;
-    } catch (error) {
-        console.error('Error fetching heroes:', error);
-        return null;
-    }
-}
 
-async function submitGuess(hero: Hero): Promise<AbilityGuessResponse | null> {
-    try {
-        const response = await fetch('http://127.0.0.1:8000/api/guess/ability/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ hero_id: hero.id }),
-        });
-        return await response.json();
-    } catch (error) {
-        console.error('Error submitting guess:', error);
-        return null;
-    }
-}
+
