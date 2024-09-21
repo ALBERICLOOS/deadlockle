@@ -3,7 +3,8 @@ from rest_framework.response import Response
 
 from .helpers import get_or_create_daily_hero, get_or_create_daily_ability
 from .models import Hero, Ability
-from .serializers import HeroSerializer, GuessSerializer, HeroDetailSerializer
+from .serializers import HeroSerializer, GuessSerializer, HeroDetailSerializer, \
+    AbilitySerializer, AbilityDetailSerializer, DailyAbilitySerializer
 
 
 class HeroList(generics.ListAPIView):
@@ -11,9 +12,19 @@ class HeroList(generics.ListAPIView):
     serializer_class = HeroSerializer
 
 
+class AbilityList(generics.ListAPIView):
+    queryset = Ability.objects.all()
+    serializer_class = AbilitySerializer
+
+
 class HeroDetail(generics.RetrieveAPIView):
     queryset = Hero.objects.all()
     serializer_class = HeroDetailSerializer
+
+
+class AbilityDetail(generics.RetrieveAPIView):
+    queryset = Ability.objects.all()
+    serializer_class = AbilityDetailSerializer
 
 
 class GuessHero(generics.UpdateAPIView):
@@ -67,7 +78,7 @@ class GuessAbility(generics.UpdateAPIView):
                 guessed_hero_id = serializer.validated_data['hero_id']
                 daily_ability = get_or_create_daily_ability()
                 real_hero_id = daily_ability.ability.hero.id
-                if guessed_hero_id.id == real_hero_id:
+                if guessed_hero_id == real_hero_id:
                     daily_ability.amount_of_people += 1
                     daily_ability.save()
                     return Response(
@@ -85,3 +96,8 @@ class GuessAbility(generics.UpdateAPIView):
             return Response({"error": "Ability does not exist."}, status=status.HTTP_400_BAD_REQUEST)
 
 
+class GetDailyAbility(generics.RetrieveAPIView):
+    serializer_class = DailyAbilitySerializer
+
+    def get_object(self):
+        return get_or_create_daily_ability().ability
