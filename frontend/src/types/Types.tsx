@@ -13,7 +13,7 @@ export type Hero = {
     image: string;
 }
 
-export type GuessResponse = {
+export type HeroGuessResponse = {
     name: boolean,
     guess: boolean,
     gender : boolean,
@@ -22,7 +22,18 @@ export type GuessResponse = {
     total_right_guesses : number,
 }
 
-export type Guess = {
+export type AbilityGuessResponse = {
+    ability: boolean,
+}
+
+export type AbilityGuess = {
+    ability: boolean,
+    hero_id: number;
+    hero_name: string;
+    image: string;
+}
+
+export type HeroGuess = {
     hero_id: number;
     image: string;
     name: string;
@@ -34,4 +45,10 @@ export type Guess = {
     release_year: number;
     release_year_guess: boolean;
     total_right_guesses : number,
+}
+
+
+export type DailyAbility = {
+    id: number;
+    image_base64: string;
 }
