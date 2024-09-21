@@ -39,9 +39,9 @@ class GuessHero(generics.UpdateAPIView):
                 daily_hero = get_or_create_daily_hero()
                 guessed_hero = Hero.objects.get(id=guessed_hero_id)
                 daily_hero_full = Hero.objects.get(id=daily_hero.hero.id)
+                guessed_hero.hero_guesses += 1
+                guessed_hero.save()
                 if daily_hero.id == guessed_hero_id:
-                    daily_hero.amount_of_people += 1
-                    daily_hero.save()
                     return Response(
                         {
                          "guess": True,
@@ -49,7 +49,7 @@ class GuessHero(generics.UpdateAPIView):
                          "gender": guessed_hero.gender == daily_hero_full.gender,
                          "type": guessed_hero.type == daily_hero_full.type,
                          "release_year": guessed_hero.release_year == daily_hero_full.release_year,
-                         "total_right_guesses": daily_hero.amount_of_people,
+                         "total_guesses": guessed_hero.hero_guesses,
                          }
                         , status=status.HTTP_200_OK)
                 return Response(
@@ -59,7 +59,7 @@ class GuessHero(generics.UpdateAPIView):
                         "gender": guessed_hero.gender == daily_hero_full.gender,
                         "type": guessed_hero.type == daily_hero_full.type,
                         "release_year": guessed_hero.release_year == daily_hero_full.release_year,
-                        "total_right_guesses": daily_hero.amount_of_people,
+                        "total_guesses": guessed_hero.hero_guesses,
                     }
                     , status=status.HTTP_200_OK)
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -76,21 +76,27 @@ class GuessAbility(generics.UpdateAPIView):
             serializer = self.get_serializer(data=request.data)
             if serializer.is_valid():
                 guessed_hero_id = serializer.validated_data['hero_id']
-                daily_ability = get_or_create_daily_ability()
-                real_hero_id = daily_ability.ability.hero.id
-                if guessed_hero_id == real_hero_id:
-                    daily_ability.amount_of_people += 1
-                    daily_ability.save()
+                try:
+                    guessed_hero = Hero.objects.get(id=guessed_hero_id)
+                    daily_ability = get_or_create_daily_ability()
+                    real_hero_id = daily_ability.ability.hero.id
+                    guessed_hero.ability_guesses += 1
+                    guessed_hero.save()
+                    if guessed_hero_id == real_hero_id:
+                        return Response(
+                            {
+                             "guess": True,
+                             "total_guesses": guessed_hero.ability_guesses,
+                             }
+                            , status=status.HTTP_200_OK)
                     return Response(
                         {
-                         "guess": True,
-                         }
-                        , status=status.HTTP_200_OK)
-                return Response(
-                    {
-                        "guess": False,
-                        }
-                        , status=status.HTTP_200_OK)
+                            "guess": False,
+                            "total_guesses": guessed_hero.ability_guesses,
+                            }
+                            , status=status.HTTP_200_OK)
+                except Hero.DoesNotExist:
+                    return Response({"error": "Hero does not exist."}, status=status.HTTP_400_BAD_REQUEST)
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         except Ability.DoesNotExist:
             return Response({"error": "Ability does not exist."}, status=status.HTTP_400_BAD_REQUEST)
