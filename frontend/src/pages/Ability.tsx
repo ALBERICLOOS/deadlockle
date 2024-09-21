@@ -6,6 +6,7 @@ import {AbilityContainer} from "../components/Tile";
 import {checkAndClearLocalStorage} from "./Classic";
 import {fetchDailAbility, fetchHeroes, submitAbilityGuess} from "../api/Api";
 import {LOCAL_STORAGE_ABILITY_SUCCESS, LOCAL_STORAGE_KEY_ABILITIES} from "../constants";
+import SuccesScreen from "../components/SuccesScreen";
 /*
 LOCAL STORAGE:
 LOCAL_STORAGE_KEY_ABILITIES: holds a list of the guessed heroes
@@ -68,6 +69,7 @@ export default function Ability() {
                         hero_id: selectedHero.id,
                         hero_name: selectedHero.name,
                         image: selectedHero.image,
+                        total_guesses: guess.total_guesses,
                     }, ...prevGuessedHeros];
                     localStorage.setItem(LOCAL_STORAGE_KEY_ABILITIES, JSON.stringify(updatedGuessedHeros));
                     return updatedGuessedHeros;
@@ -121,14 +123,7 @@ export default function Ability() {
                         resetKey={resetKey}
                     />
                 ) : (
-                    <>
-                        <h1 className={`found-hero-heading ${found ? 'found' : ''} mobile`}>
-                            🎉 CORRECT HERO! 🎉
-                        </h1>
-                        <h1 className={`found-hero-heading ${found ? 'found' : ''} desktop`}>
-                            🎉 YOU HAVE FOUND THE CORRECT HERO! 🎉
-                        </h1>
-                    </>
+                    <SuccesScreen found={found} />
                 )}
             </Box>
             <Box
@@ -140,7 +135,7 @@ export default function Ability() {
                 textAlign="center"
             >
                 {guessedHeros.map((guess, index) => (
-                    <AbilityContainer key={guess.hero_id} image={guess.image} guess={guess.ability} name={guess.hero_name} guessCount={0} animate={index === 0} />
+                    <AbilityContainer key={guess.hero_id} image={guess.image} guess={guess.ability} name={guess.hero_name} guessCount={guess.total_guesses} animate={index === 0} />
                 ))}
             </Box>
         </Box>

@@ -10,8 +10,9 @@ import {
     LOCAL_STORAGE_KEY_HEROES,
     DEBUG,
     red,
-    green, LOCAL_STORAGE_ABILITY_SUCCESS
+    green, LOCAL_STORAGE_ABILITY_SUCCESS, LOCAL_STORAGE_HERO_SUCCESS
 } from "../constants";
+import SuccesScreen from "../components/SuccesScreen";
 
 
 export function checkAndClearLocalStorage(key: string){
@@ -27,6 +28,7 @@ export function checkAndClearLocalStorage(key: string){
         }
         localStorage.setItem(LOCAL_STORAGE_KEY_DATE, currentDate);
         localStorage.removeItem(LOCAL_STORAGE_ABILITY_SUCCESS)
+        localStorage.removeItem(LOCAL_STORAGE_HERO_SUCCESS)
     }
 
     if (DEBUG) {
@@ -39,6 +41,8 @@ export default function Classic() {
     const [selectedHero, setSelectedHero] = React.useState<Hero | null>(null);
     const [guessedHeros, setGuessedHeros] = React.useState<HeroGuess[]>([]);
     const [resetKey, setResetKey] = React.useState<string>('initial');  // Key to reset Autocomplete
+    const [found, setFound] = React.useState<boolean>(false);
+
 
     React.useEffect(() => {
         const fetchAndSetHeroes = async () => {
@@ -59,6 +63,11 @@ export default function Classic() {
                     !savedGuessedHeros.some((guess: HeroGuess) => guess.hero_id === hero.id)
                 );
                 setHeroes(updatedHeroes);
+            }
+
+            const success = localStorage.getItem(LOCAL_STORAGE_HERO_SUCCESS);
+            if (success){
+                setFound(true);
             }
         };
 
@@ -88,15 +97,21 @@ export default function Classic() {
                             type_guess: guess.type,
                             release_year: hero.release_year,
                             release_year_guess: guess.release_year,
-                            total_right_guesses: guess.total_right_guesses,
+                            total_guesses: guess.total_guesses,
                         },
-                        ...prevGuessedHeros // Add new guess to the front
+                        ...prevGuessedHeros
                     ];
 
                     localStorage.setItem(LOCAL_STORAGE_KEY_HEROES, JSON.stringify(updatedGuessedHeros));
 
+                    if (updatedGuessedHeros.length > 0 && updatedGuessedHeros[0].name_guess) {
+                        setFound(true);
+                        localStorage.setItem(LOCAL_STORAGE_HERO_SUCCESS, "true");
+                    }
+
                     return updatedGuessedHeros;
                 });
+
 
                 const deleteIndex = heroes.findIndex((hero) => hero.id === selectedHero.id);
                 if (deleteIndex > -1) {
@@ -129,7 +144,11 @@ export default function Classic() {
                 textAlign="center"
             >
                 <h1>Classic</h1>
-                <SelectHero heroes={heroes} handleSubmit={handleSubmit} setSelectedHero={setSelectedHero} resetKey={resetKey} />
+                {!found ?
+                    <SelectHero heroes={heroes} handleSubmit={handleSubmit} setSelectedHero={setSelectedHero} resetKey={resetKey} />
+                    :
+                    <SuccesScreen found={found} />
+                }
             </Box>
 
             <Box
@@ -149,6 +168,7 @@ export default function Classic() {
                             { label: guess.gender, backgroundColor: guess.gender_guess ? green : red },
                             { label: guess.type, backgroundColor: guess.type_guess ? green : red },
                             { label: guess.release_year.toString(), backgroundColor: guess.release_year_guess ? green : red },
+                            { label: guess.total_guesses.toString(), backgroundColor: "white", fontColor: "black"},
                         ]}
                     />
                 ))}
