@@ -8,6 +8,8 @@ class Hero(models.Model):
     type = models.CharField(max_length=20)
     release_year = models.IntegerField()
     image = models.ImageField(upload_to="heroes/", default="heroes/default.png")
+    hero_guess_attempts = models.IntegerField(default=0)
+    ability_guess_attempts = models.IntegerField(default=0)
 
     def __str__(self):
         return self.name
@@ -16,7 +18,6 @@ class Hero(models.Model):
 class DailyHero(models.Model):
     hero = models.ForeignKey(Hero, on_delete=models.CASCADE)
     date = models.DateField(default=timezone.now, unique=True)
-    amount_of_people = models.IntegerField(default=0)
 
     def __str__(self):
         return f"{self.hero.name} - {self.date}"
