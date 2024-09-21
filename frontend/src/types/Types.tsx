@@ -23,7 +23,7 @@ export type HeroGuessResponse = {
 }
 
 export type AbilityGuessResponse = {
-    ability: boolean,
+    guess: boolean,
 }
 
 export type AbilityGuess = {
