@@ -48,16 +48,15 @@ export default function Ability() {
             const [guess] = await Promise.all([
                 submitAbilityGuess(selectedHero),
             ]);
-            if (guess){
+            if (guess !== null){
                 setGuessedHeros(prevGuessedHeros => {
                     const updatedGuessedHeros = [{
-                        ability: guess.ability,
+                        ability: guess.guess,
                         hero_id: selectedHero.id,
                         hero_name: selectedHero.name,
                         image: selectedHero.image,
                     }, ...prevGuessedHeros];
                     localStorage.setItem(LOCAL_STORAGE_KEY_ABILITIES, JSON.stringify(updatedGuessedHeros));
-
                     return updatedGuessedHeros;
                 });
 
@@ -74,9 +73,6 @@ export default function Ability() {
             }
 
     };
-
-
-
     return(
         <Box
             display="flex"
@@ -100,9 +96,7 @@ export default function Ability() {
                     className="image-style"
                 />
                 <SelectHero heroes={heroes} handleSubmit={handleSubmit} setSelectedHero={setSelectedHero} resetKey={resetKey} />
-
             </Box>
-
             <Box
                 display="flex"
                 flexDirection="column"

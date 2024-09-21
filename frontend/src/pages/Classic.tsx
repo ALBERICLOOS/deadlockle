@@ -1,34 +1,42 @@
-import { Guess, GuessResponse, Hero, HeroDetail } from "../types/Types";
+import {HeroGuess, Hero} from "../types/Types";
 import React from "react";
 import SelectHero from "../components/SelectHero";
 import Box from "@mui/material/Box";
 import TileContainer from "../components/Tile";
+import {fetchHero, fetchHeroes, submitHeroGuess} from "../api/Api";
+import {LOCAL_STORAGE_KEY_ABILITIES, LOCAL_STORAGE_KEY_DATE, LOCAL_STORAGE_KEY_HEROES, DEBUG} from "../constants";
 
-const LOCAL_STORAGE_KEY_HEROES = 'heroes';
-const LOCAL_STORAGE_KEY_DATE = 'date';
 
-function checkAndClearLocalStorage() {
+export function checkAndClearLocalStorage(key: string){
     const savedDate = localStorage.getItem(LOCAL_STORAGE_KEY_DATE);
     const currentDate = new Date().toISOString().split('T')[0]; // Get current date in YYYY-MM-DD format
 
     if (savedDate !== currentDate) {
-        // Clear local storage if the saved date is different from the current date
-        localStorage.removeItem(LOCAL_STORAGE_KEY_HEROES);
+        if (key === LOCAL_STORAGE_KEY_HEROES){
+            localStorage.removeItem(LOCAL_STORAGE_KEY_HEROES);
+        }
+        else if (key === LOCAL_STORAGE_KEY_ABILITIES){
+            localStorage.removeItem(LOCAL_STORAGE_KEY_ABILITIES);
+        }
         localStorage.setItem(LOCAL_STORAGE_KEY_DATE, currentDate); // Update the saved date to the current date
+    }
+
+    if (DEBUG) {
+        localStorage.clear(); // Clear all local storage
     }
 }
 
 export default function Classic() {
     const [heroes, setHeroes] = React.useState<Hero[]>([]);
     const [selectedHero, setSelectedHero] = React.useState<Hero | null>(null);
-    const [guessedHeros, setGuessedHeros] = React.useState<Guess[]>([]);
+    const [guessedHeros, setGuessedHeros] = React.useState<HeroGuess[]>([]);
     const [resetKey, setResetKey] = React.useState<string>('initial');  // Key to reset Autocomplete
 
     React.useEffect(() => {
         const fetchAndSetHeroes = async () => {
 
-            checkAndClearLocalStorage();
-            // Fetch heroes from the API
+            checkAndClearLocalStorage(LOCAL_STORAGE_KEY_HEROES);
+
             const heroes = await fetchHeroes();
             setHeroes(heroes);
 
@@ -40,7 +48,7 @@ export default function Classic() {
 
                 // Filter out heroes that are already guessed
                 const updatedHeroes = heroes.filter(hero =>
-                    !savedGuessedHeros.some((guess: Guess) => guess.hero_id === hero.id)
+                    !savedGuessedHeros.some((guess: HeroGuess) => guess.hero_id === hero.id)
                 );
                 setHeroes(updatedHeroes);
             }
@@ -54,14 +62,11 @@ export default function Classic() {
         event.preventDefault();
         if (selectedHero) {
             const [guess, hero] = await Promise.all([
-                submitGuess(selectedHero),
+                submitHeroGuess(selectedHero),
                 fetchHero(selectedHero.id)
             ]);
 
             if (guess && hero) {
-                console.log("Guess Response:", guess);
-                console.log("Hero Data:", hero);
-
                 setGuessedHeros(prevGuessedHeros => {
                     const updatedGuessedHeros = [
                         {
@@ -146,44 +151,4 @@ export default function Classic() {
     );
 }
 
-async function submitGuess(hero: Hero): Promise<GuessResponse | null> {
-    try {
-        const response = await fetch('http://127.0.0.1:8000/api/guess/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ hero_id: hero.id }),
-        });
-        return await response.json();
-    } catch (error) {
-        console.error('Error submitting guess:', error);
-        return null;
-    }
-}
 
-async function fetchHero(id: number): Promise<HeroDetail | null> {
-    try {
-        const response = await fetch(`http://127.0.0.1:8000/api/heroes/${id}/`);
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return await response.json() as HeroDetail;
-    } catch (error) {
-        console.error('Error fetching heroes:', error);
-        return null;
-    }
-}
-
-async function fetchHeroes(): Promise<Hero[]> {
-    try {
-        const response = await fetch('http://127.0.0.1:8000/api/heroes/');
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return await response.json() as Hero[];
-    } catch (error) {
-        console.error('Error fetching heroes:', error);
-        return [];
-    }
-}
