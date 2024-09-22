@@ -25,7 +25,6 @@ const LogoContainer = styled(Box)(({ theme }) => ({
     backgroundColor: '#1a1a1a',
 }));
 
-// Button styles
 const StyledLink = styled(Link)(({ theme }) => ({
     textDecoration: 'none', // Remove underline from links
     fontFamily: '"Orbitron", sans-serif',
@@ -37,6 +36,10 @@ const StyledLink = styled(Link)(({ theme }) => ({
     letterSpacing: '0.1rem',
     borderRadius: '5px',
     margin: '0.5rem 0', // Space between buttons
+    width: '100px', // Set a fixed width for buttons
+    display: 'flex', // Ensure the content is centered
+    justifyContent: 'center',
+    alignItems: 'center',
     transition: 'transform 0.3s ease, background-color 0.3s ease',
     '&:hover': {
         transform: 'scale(1.1)', // Enlarge button on hover
