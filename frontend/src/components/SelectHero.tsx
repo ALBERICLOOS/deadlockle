@@ -4,6 +4,7 @@ import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import { Hero } from "../types/Types";
 import { Dispatch, FormEventHandler } from "react";
+import {Typography} from "@mui/material";
 
 export default function SelectHero(props: { heroes: Hero[], handleSubmit: FormEventHandler<HTMLFormElement>, setSelectedHero: Dispatch<React.SetStateAction<Hero | null>>, resetKey: string }) {
 
@@ -35,7 +36,9 @@ export default function SelectHero(props: { heroes: Hero[], handleSubmit: FormEv
                                 src={option.image}
                                 alt=""
                             />
-                            {option.name}
+                            <Typography variant="h1" sx={{ fontFamily: '"Orbitron", sans-serif', color: "black", fontSize: '1rem', fontWeight: "bold"}}>
+                                {option.name}
+                            </Typography>
                         </Box>
                     );
                 }}
@@ -44,6 +47,22 @@ export default function SelectHero(props: { heroes: Hero[], handleSubmit: FormEv
                         inputRef={input => input && input.focus()}  // Focus the input on render
                         {...params}
                         label="Choose a hero"
+                        variant="outlined" // Keep outline style
+                        sx={{
+                            label: { color: 'white' }, // Label color to white
+                            input: { color: 'white', fontFamily: '"Orbitron", sans-serif'}, // Input text color to white
+                            '.MuiOutlinedInput-root': {
+                                '& fieldset': {
+                                    borderColor: 'white', // Border color to white
+                                },
+                                '&:hover fieldset': {
+                                    borderColor: 'white', // Keep white border on hover
+                                },
+                                '&.Mui-focused fieldset': {
+                                    borderColor: 'white', // White border when focused
+                                },
+                            },
+                        }}
                         slotProps={{
                             htmlInput: {
                                 ...params.inputProps,
