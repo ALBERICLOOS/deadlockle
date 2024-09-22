@@ -551,12 +551,292 @@
   },
   {
     "model": "api.ability",
-    "pk": 46,
+    "pk": 56,
     "fields": {
       "hero": 14,
       "name": "Affliction",
       "key": 4,
       "image": "abilities/pocket/4.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 57,
+    "fields": {
+      "hero": 15,
+      "name": "Lightning Ball",
+      "key": 1,
+      "image": "abilities/seven/1.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 58,
+    "fields": {
+      "hero": 15,
+      "name": "Static Charge",
+      "key": 2,
+      "image": "abilities/seven/2.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 59,
+    "fields": {
+      "hero": 15,
+      "name": "Power Surge",
+      "key": 3,
+      "image": "abilities/seven/3.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 60,
+    "fields": {
+      "hero": 15,
+      "name": "Storm Cloud",
+      "key": 4,
+      "image": "abilities/seven/4.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 61,
+    "fields": {
+      "hero": 16,
+      "name": "Serrated Knives",
+      "key": 1,
+      "image": "abilities/shiv/1.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 62,
+    "fields": {
+      "hero": 16,
+      "name": "Slice and Dice",
+      "key": 2,
+      "image": "abilities/shiv/2.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 63,
+    "fields": {
+      "hero": 16,
+      "name": "Bloodletting",
+      "key": 3,
+      "image": "abilities/shiv/3.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 64,
+    "fields": {
+      "hero": 16,
+      "name": "Killing Blow",
+      "key": 4,
+      "image": "abilities/shiv/4.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 65,
+    "fields": {
+      "hero": 17,
+      "name": "Stake",
+      "key": 1,
+      "image": "abilities/vindicta/1.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 66,
+    "fields": {
+      "hero": 17,
+      "name": "Flight",
+      "key": 2,
+      "image": "abilities/vindicta/2.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 67,
+    "fields": {
+      "hero": 17,
+      "name": "Crow Familiar",
+      "key": 3,
+      "image": "abilities/vindicta/3.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 68,
+    "fields": {
+      "hero": 17,
+      "name": "Assassinate",
+      "key": 4,
+      "image": "abilities/vindicta/4.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 69,
+    "fields": {
+      "hero": 18,
+      "name": "Splatter",
+      "key": 1,
+      "image": "abilities/viscous/1.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 70,
+    "fields": {
+      "hero": 18,
+      "name": "The Cube",
+      "key": 2,
+      "image": "abilities/viscous/2.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 71,
+    "fields": {
+      "hero": 18,
+      "name": "Puddle Punch",
+      "key": 3,
+      "image": "abilities/viscous/3.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 72,
+    "fields": {
+      "hero": 18,
+      "name": "Goo Ball",
+      "key": 4,
+      "image": "abilities/viscous/4.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 73,
+    "fields": {
+      "hero": 19,
+      "name": "Alchemical Flask",
+      "key": 1,
+      "image": "abilities/warden/1.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 74,
+    "fields": {
+      "hero": 19,
+      "name": "Willpower",
+      "key": 2,
+      "image": "abilities/warden/2.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 75,
+    "fields": {
+      "hero": 19,
+      "name": "Binding Word",
+      "key": 3,
+      "image": "abilities/warden/3.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 76,
+    "fields": {
+      "hero": 19,
+      "name": "Last Stand",
+      "key": 4,
+      "image": "abilities/warden/4.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 77,
+    "fields": {
+      "hero": 20,
+      "name": "Card Trick",
+      "key": 1,
+      "image": "abilities/wraith/1.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 78,
+    "fields": {
+      "hero": 20,
+      "name": "Project Mind",
+      "key": 2,
+      "image": "abilities/wraith/2.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 79,
+    "fields": {
+      "hero": 20,
+      "name": "Full Auto",
+      "key": 3,
+      "image": "abilities/wraith/3.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 80,
+    "fields": {
+      "hero": 20,
+      "name": "Telekinesis",
+      "key": 4,
+      "image": "abilities/wraith/4.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 81,
+    "fields": {
+      "hero": 21,
+      "name": "Power Slash",
+      "key": 1,
+      "image": "abilities/yamato/1.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 82,
+    "fields": {
+      "hero": 21,
+      "name": "Flying Strike",
+      "key": 2,
+      "image": "abilities/yamato/2.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 83,
+    "fields": {
+      "hero": 21,
+      "name": "Crimson Slash",
+      "key": 3,
+      "image": "abilities/yamato/3.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 84,
+    "fields": {
+      "hero": 21,
+      "name": "Shadow Transformation",
+      "key": 4,
+      "image": "abilities/yamato/4.jpg"
     }
   }
 ]
