@@ -1,12 +1,12 @@
 import {DailyAbility, AbilityGuess, Hero} from "../types/Types";
 import React from "react";
 import Box from "@mui/material/Box";
-import SelectHero from "../components/SelectHero";
 import {AbilityContainer} from "../components/Tile";
 import {checkAndClearLocalStorage} from "./Classic";
 import {fetchDailAbility, fetchHeroes, submitAbilityGuess} from "../api/Api";
 import {LOCAL_STORAGE_ABILITY_SUCCESS, LOCAL_STORAGE_KEY_ABILITIES} from "../constants";
-import SuccesScreen from "../components/SuccesScreen";
+import PageHeader from "../components/PageHeader";
+
 /*
 LOCAL STORAGE:
 LOCAL_STORAGE_KEY_ABILITIES: holds a list of the guessed heroes
@@ -102,30 +102,7 @@ export default function Ability() {
             minHeight="100vh"
             textAlign="center"
         >
-            <Box
-                display="flex"
-                flexDirection="column"
-                justifyContent="center"
-                alignItems="center"
-                height="50vh" // Sets height to 30% of viewport height
-                textAlign="center"
-            >
-                <h1>Ability</h1>
-                <img
-                    src={"data:image/jpeg;base64," + dailyAbility?.image_base64}
-                    className="image-style"
-                />
-                {!found ? (
-                    <SelectHero
-                        heroes={heroes}
-                        handleSubmit={handleSubmit}
-                        setSelectedHero={setSelectedHero}
-                        resetKey={resetKey}
-                    />
-                ) : (
-                    <SuccesScreen found={found} />
-                )}
-            </Box>
+            <PageHeader title={"Ability"} found={found} heroes={heroes} handleSubmit={handleSubmit} setSelectedHero={setSelectedHero} resetKey={resetKey} image={dailyAbility?.image_base64}/>
             <Box
                 display="flex"
                 flexDirection="column"
