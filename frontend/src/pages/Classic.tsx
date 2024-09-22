@@ -13,6 +13,8 @@ import {
     green, LOCAL_STORAGE_ABILITY_SUCCESS, LOCAL_STORAGE_HERO_SUCCESS
 } from "../constants";
 import SuccesScreen from "../components/SuccesScreen";
+import Logo from "../components/Logo";
+import Title from "../components/Title";
 
 
 export function checkAndClearLocalStorage(key: string){
@@ -136,14 +138,16 @@ export default function Classic() {
             textAlign="center"
         >
             <Box
+                marginTop={7}
+                marginBottom={5}
                 display="flex"
                 flexDirection="column"
                 justifyContent="center"
                 alignItems="center"
-                height="30vh" // Sets height to 30% of viewport height
                 textAlign="center"
             >
-                <h1>Classic</h1>
+                <Logo/>
+                <Title variant="h1">Classic</Title>
                 {!found ?
                     <SelectHero heroes={heroes} handleSubmit={handleSubmit} setSelectedHero={setSelectedHero} resetKey={resetKey} />
                     :
@@ -159,6 +163,14 @@ export default function Classic() {
                 flexGrow={1} // This will take up the remaining 70%
                 textAlign="center"
             >
+                <TileContainer tiles={[
+                    {label: "Hero", backgroundColor: "white", fontColor: "black"},
+                    {label: "Name", backgroundColor: "white", fontColor: "black"},
+                    {label: "Gender", backgroundColor: "white", fontColor: "black"},
+                    {label: "Type", backgroundColor: "white", fontColor: "black"},
+                    {label: "Release Year", backgroundColor: "white", fontColor: "black"},
+                    {label: "Total Guesses", backgroundColor: "white", fontColor: "black"}
+                ]}/>
                 {guessedHeros.map((guess, index) => (
                     <TileContainer
                         key={guess.hero_id} // Use hero_id or another unique identifier as the key
