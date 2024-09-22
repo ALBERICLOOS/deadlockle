@@ -15,6 +15,7 @@ import {
 import SuccesScreen from "../components/SuccesScreen";
 import Logo from "../components/Logo";
 import Title from "../components/Title";
+import PageHeader from "../components/PageHeader";
 
 
 export function checkAndClearLocalStorage(key: string){
@@ -137,23 +138,7 @@ export default function Classic() {
             minHeight="100vh"
             textAlign="center"
         >
-            <Box
-                marginTop={7}
-                marginBottom={5}
-                display="flex"
-                flexDirection="column"
-                justifyContent="center"
-                alignItems="center"
-                textAlign="center"
-            >
-                <Logo/>
-                <Title variant="h1">Classic</Title>
-                {!found ?
-                    <SelectHero heroes={heroes} handleSubmit={handleSubmit} setSelectedHero={setSelectedHero} resetKey={resetKey} />
-                    :
-                    <SuccesScreen found={found} />
-                }
-            </Box>
+            <PageHeader title={"Classic"} found={found} heroes={heroes} handleSubmit={handleSubmit} setSelectedHero={setSelectedHero} resetKey={resetKey}/>
 
             <Box
                 display="flex"
@@ -163,14 +148,14 @@ export default function Classic() {
                 flexGrow={1} // This will take up the remaining 70%
                 textAlign="center"
             >
-                <TileContainer tiles={[
+                {guessedHeros.length > 0 && <TileContainer tiles={[
                     {label: "Hero", backgroundColor: "white", fontColor: "black"},
                     {label: "Name", backgroundColor: "white", fontColor: "black"},
                     {label: "Gender", backgroundColor: "white", fontColor: "black"},
                     {label: "Type", backgroundColor: "white", fontColor: "black"},
                     {label: "Release Year", backgroundColor: "white", fontColor: "black"},
                     {label: "Total Guesses", backgroundColor: "white", fontColor: "black"}
-                ]}/>
+                ]}/>}
                 {guessedHeros.map((guess, index) => (
                     <TileContainer
                         key={guess.hero_id} // Use hero_id or another unique identifier as the key
