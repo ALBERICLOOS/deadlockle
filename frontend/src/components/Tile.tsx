@@ -26,13 +26,24 @@ export function TileComponent(props: { label: string, backgroundColor?: string, 
                 borderRadius: '10px',
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat',
-                width: 100,
-                height: 100,
+                width: {
+                    xs: '60px',   // Width for extra-small devices
+                    sm: '80px',   // Width for small devices
+                    md: '100px',  // Width for medium and up
+                },
+                height: {
+                    xs: '60px',   // Height for extra-small devices
+                    sm: '80px',   // Height for small devices
+                    md: '100px',  // Height for medium and up
+                },
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 border: '2px solid black',
-                margin: '0 5px',
+                margin: {
+                    md: '0 5px',
+                    xs: '0 2px',
+                },
                 boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.3)',
                 visibility: 'hidden', /* Ensure visibility is hidden initially */
                 animation: css`${slideIn} 0.5s ease-out ${props.delay}s forwards`,
@@ -49,15 +60,20 @@ export function TileComponent(props: { label: string, backgroundColor?: string, 
         </Box>
     );
 };
-
 export default function TileContainer(props: { tiles: { label: string, backgroundColor?: string, backgroundImage?: string, fontColor?: string}[] }) {
     return (
         <Box
             sx={{
                 display: 'flex',
                 alignItems: 'center',
-                justifyContent: 'flex-start',
-                padding: 2,
+                justifyContent: 'center', // Change to 'center' to center the tiles
+                padding: {
+                    xs: 1,
+                    sm: 1,
+                    md: 2,
+                },
+                width: "100%",
+                flexWrap: 'wrap', // Allow tiles to wrap if necessary
             }}
         >
             {props.tiles.map((tile, index) => (
@@ -73,7 +89,6 @@ export default function TileContainer(props: { tiles: { label: string, backgroun
         </Box>
     );
 }
-
 export function AbilityContainer(props: { image: string; name: string; guess: boolean; guessCount: number; animate: boolean }) {
     return (
         <Box

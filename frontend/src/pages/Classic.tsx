@@ -1,6 +1,5 @@
 import {HeroGuess, Hero} from "../types/Types";
 import React from "react";
-import SelectHero from "../components/SelectHero";
 import Box from "@mui/material/Box";
 import TileContainer from "../components/Tile";
 import {fetchHero, fetchHeroes, submitHeroGuess} from "../api/Api";
@@ -12,11 +11,8 @@ import {
     red,
     green, LOCAL_STORAGE_ABILITY_SUCCESS, LOCAL_STORAGE_HERO_SUCCESS
 } from "../constants";
-import SuccesScreen from "../components/SuccesScreen";
-import Logo from "../components/Logo";
-import Title from "../components/Title";
 import PageHeader from "../components/PageHeader";
-
+import { useMediaQuery, useTheme } from '@mui/material';
 
 export function checkAndClearLocalStorage(key: string){
     const savedDate = localStorage.getItem(LOCAL_STORAGE_KEY_DATE);
@@ -45,6 +41,9 @@ export default function Classic() {
     const [guessedHeros, setGuessedHeros] = React.useState<HeroGuess[]>([]);
     const [resetKey, setResetKey] = React.useState<string>('initial');  // Key to reset Autocomplete
     const [found, setFound] = React.useState<boolean>(false);
+
+    const theme = useTheme();
+    const isXs = useMediaQuery(theme.breakpoints.down('sm'));
 
 
     React.useEffect(() => {
@@ -148,14 +147,18 @@ export default function Classic() {
                 flexGrow={1} // This will take up the remaining 70%
                 textAlign="center"
             >
-                {guessedHeros.length > 0 && <TileContainer tiles={[
-                    {label: "Hero", backgroundColor: "white", fontColor: "black"},
-                    {label: "Name", backgroundColor: "white", fontColor: "black"},
-                    {label: "Gender", backgroundColor: "white", fontColor: "black"},
-                    {label: "Type", backgroundColor: "white", fontColor: "black"},
-                    {label: "Release Year", backgroundColor: "white", fontColor: "black"},
-                    {label: "Total Guesses", backgroundColor: "white", fontColor: "black"}
-                ]}/>}
+                {guessedHeros.length > 0 && (
+                    <TileContainer
+                        tiles={[
+                            { label: "Hero", backgroundColor: "white", fontColor: "black" },
+                            { label: "Name", backgroundColor: "white", fontColor: "black" },
+                            { label: "Gender", backgroundColor: "white", fontColor: "black" },
+                            { label: "Type", backgroundColor: "white", fontColor: "black" },
+                            { label: "Release Year", backgroundColor: "white", fontColor: "black" },
+                            ...(isXs ? [] : [{ label: "Total Guesses", backgroundColor: "white", fontColor: "black" }])
+                        ]}
+                    />
+                )}
                 {guessedHeros.map((guess, index) => (
                     <TileContainer
                         key={guess.hero_id} // Use hero_id or another unique identifier as the key
@@ -165,7 +168,7 @@ export default function Classic() {
                             { label: guess.gender, backgroundColor: guess.gender_guess ? green : red },
                             { label: guess.type, backgroundColor: guess.type_guess ? green : red },
                             { label: guess.release_year.toString(), backgroundColor: guess.release_year_guess ? green : red },
-                            { label: guess.total_guesses.toString(), backgroundColor: "white", fontColor: "black"},
+                            ...(isXs ? [] : [{ label: guess.total_guesses.toString(), backgroundColor: "white", fontColor: "black"}]),
                         ]}
                     />
                 ))}
