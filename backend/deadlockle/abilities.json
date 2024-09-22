@@ -118,5 +118,445 @@
       "key": 4,
       "image": "abilities/dynamo/4.jpg"
     }
+  },
+  {
+    "model": "api.ability",
+    "pk": 13,
+    "fields": {
+      "hero": 4,
+      "name": "Charged Shot",
+      "key": 1,
+      "image": "abilities/grey_talon/1.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 14,
+    "fields": {
+      "hero": 4,
+      "name": "Rain of Arrows",
+      "key": 2,
+      "image": "abilities/grey_talon/2.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 15,
+    "fields": {
+      "hero": 4,
+      "name": "Immobilizing Trap",
+      "key": 3,
+      "image": "abilities/grey_talon/3.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 16,
+    "fields": {
+      "hero": 4,
+      "name": "Guided Owl",
+      "key": 4,
+      "image": "abilities/grey_talon/4.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 17,
+    "fields": {
+      "hero": 5,
+      "name": "Sleep Dagger",
+      "key": 1,
+      "image": "abilities/haze/1.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 18,
+    "fields": {
+      "hero": 5,
+      "name": "Smoke Bomb",
+      "key": 2,
+      "image": "abilities/haze/2.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 19,
+    "fields": {
+      "hero": 5,
+      "name": "Fixation",
+      "key": 3,
+      "image": "abilities/haze/3.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 20,
+    "fields": {
+      "hero": 5,
+      "name": "Bullet Dance",
+      "key": 4,
+      "image": "abilities/haze/4.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 21,
+    "fields": {
+      "hero": 6,
+      "name": "Catalyst",
+      "key": 1,
+      "image": "abilities/infernus/1.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 22,
+    "fields": {
+      "hero": 6,
+      "name": "Flame Dash",
+      "key": 2,
+      "image": "abilities/infernus/2.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 23,
+    "fields": {
+      "hero": 6,
+      "name": "Afterburn",
+      "key": 3,
+      "image": "abilities/infernus/3.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 24,
+    "fields": {
+      "hero": 6,
+      "name": "Concussive Combustion",
+      "key": 4,
+      "image": "abilities/infernus/4.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 25,
+    "fields": {
+      "hero": 7,
+      "name": "Kudzu Bomb",
+      "key": 1,
+      "image": "abilities/ivy/1.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 26,
+    "fields": {
+      "hero": 7,
+      "name": "Watcher's Covenant",
+      "key": 2,
+      "image": "abilities/ivy/2.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 27,
+    "fields": {
+      "hero": 7,
+      "name": "Stone Form",
+      "key": 3,
+      "image": "abilities/ivy/3.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 28,
+    "fields": {
+      "hero": 7,
+      "name": "Air Drop",
+      "key": 4,
+      "image": "abilities/ivy/4.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 29,
+    "fields": {
+      "hero": 8,
+      "name": "Frost Grenade",
+      "key": 1,
+      "image": "abilities/kelvin/1.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 30,
+    "fields": {
+      "hero": 8,
+      "name": "Ice Path",
+      "key": 2,
+      "image": "abilities/kelvin/2.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 31,
+    "fields": {
+      "hero": 8,
+      "name": "Arctic Beam",
+      "key": 3,
+      "image": "abilities/kelvin/3.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 32,
+    "fields": {
+      "hero": 8,
+      "name": "Frozen Shelter",
+      "key": 4,
+      "image": "abilities/kelvin/4.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 33,
+    "fields": {
+      "hero": 9,
+      "name": "Essence Bomb",
+      "key": 1,
+      "image": "abilities/lady_geist/1.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 34,
+    "fields": {
+      "hero": 9,
+      "name": "Life Drain",
+      "key": 2,
+      "image": "abilities/lady_geist/2.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 35,
+    "fields": {
+      "hero": 9,
+      "name": "Malice",
+      "key": 3,
+      "image": "abilities/lady_geist/3.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 36,
+    "fields": {
+      "hero": 9,
+      "name": "Soul Exchange",
+      "key": 4,
+      "image": "abilities/lady_geist/4.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 37,
+    "fields": {
+      "hero": 10,
+      "name": "Ground Strike",
+      "key": 1,
+      "image": "abilities/lash/1.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 38,
+    "fields": {
+      "hero": 10,
+      "name": "Grapple",
+      "key": 2,
+      "image": "abilities/lash/2.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 39,
+    "fields": {
+      "hero": 10,
+      "name": "Flog",
+      "key": 3,
+      "image": "abilities/lash/3.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 40,
+    "fields": {
+      "hero": 10,
+      "name": "Death Slam",
+      "key": 4,
+      "image": "abilities/lash/4.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 41,
+    "fields": {
+      "hero": 11,
+      "name": "Mini Turret",
+      "key": 1,
+      "image": "abilities/mcginnis/1.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 42,
+    "fields": {
+      "hero": 11,
+      "name": "Medicinal Specter",
+      "key": 2,
+      "image": "abilities/mcginnis/2.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 43,
+    "fields": {
+      "hero": 11,
+      "name": "Spectral Wall",
+      "key": 3,
+      "image": "abilities/mcginnis/3.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 44,
+    "fields": {
+      "hero": 11,
+      "name": "Heavy Barrage",
+      "key": 4,
+      "image": "abilities/mcginnis/4.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 45,
+    "fields": {
+      "hero": 12,
+      "name": "Scorn",
+      "key": 1,
+      "image": "abilities/mo_&_krill/1.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 46,
+    "fields": {
+      "hero": 12,
+      "name": "Burrow",
+      "key": 2,
+      "image": "abilities/mo_&_krill/2.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 47,
+    "fields": {
+      "hero": 12,
+      "name": "Sand Blast",
+      "key": 3,
+      "image": "abilities/mo_&_krill/3.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 48,
+    "fields": {
+      "hero": 12,
+      "name": "Combo",
+      "key": 4,
+      "image": "abilities/mo_&_krill/4.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 49,
+    "fields": {
+      "hero": 13,
+      "name": "Pulse Grenade",
+      "key": 1,
+      "image": "abilities/paradox/1.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 50,
+    "fields": {
+      "hero": 13,
+      "name": "Time Wall",
+      "key": 2,
+      "image": "abilities/paradox/2.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 51,
+    "fields": {
+      "hero": 13,
+      "name": "Kinetic Carbine",
+      "key": 3,
+      "image": "abilities/paradox/3.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 52,
+    "fields": {
+      "hero": 13,
+      "name": "Paradoxical Swap",
+      "key": 4,
+      "image": "abilities/paradox/4.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 53,
+    "fields": {
+      "hero": 14,
+      "name": "Barrage",
+      "key": 1,
+      "image": "abilities/pocket/1.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 54,
+    "fields": {
+      "hero": 14,
+      "name": "Flying Cloak",
+      "key": 2,
+      "image": "abilities/pocket/2.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 55,
+    "fields": {
+      "hero": 14,
+      "name": "Enchanter's Satchel",
+      "key": 3,
+      "image": "abilities/pocket/3.jpg"
+    }
+  },
+  {
+    "model": "api.ability",
+    "pk": 46,
+    "fields": {
+      "hero": 14,
+      "name": "Affliction",
+      "key": 4,
+      "image": "abilities/pocket/4.jpg"
+    }
   }
 ]
