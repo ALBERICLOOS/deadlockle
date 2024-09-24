@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-a^90e7@e0)qjhz&8^v@@cduj9%7jmudoqefh@r4ocw#i6%hcia
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -56,7 +56,11 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = "deadlockle.urls"
 
-CORS_ORIGIN_ALLOW_ALL = True   # for development only
+CORS_ALLOW_ORIGINS = [
+    "http://localhost",
+    "http://127.0.0.1",
+    "http://0.0.0.0",
+    ]
 
 TEMPLATES = [
     {
