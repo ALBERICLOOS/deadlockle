@@ -56,6 +56,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = "deadlockle.urls"
 
+CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_ORIGINS = [
     "http://localhost",
     "http://127.0.0.1",
