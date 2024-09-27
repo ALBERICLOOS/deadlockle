@@ -25,6 +25,7 @@ export default function App() {
                     <Route index element={<Home />} />
                     <Route path="classic" element={<Classic />} />
                     <Route path="ability" element={<Ability/>} />
+                    <Route path="*" element={<h1>Not Found</h1>} />
                 </Routes>
             </BrowserRouter>
         </AppContainer>
