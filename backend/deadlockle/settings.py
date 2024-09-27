@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-a^90e7@e0)qjhz&8^v@@cduj9%7jmudoqefh@r4ocw#i6%hcia
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ["deadlockle.com", "localhost", "127.0.0.1"]
 
 
 # Application definition
@@ -54,14 +54,20 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
 ]
 
-ROOT_URLCONF = "deadlockle.urls"
+CSRF_TRUSTED_ORIGINS = ['http://localhost:8000', 'http://localhost:3000', 'https://deadlockle.com/']
 
-CORS_ORIGIN_ALLOW_ALL = True
-CORS_ALLOW_ORIGINS = [
-    "http://localhost",
-    "http://127.0.0.1",
-    "http://0.0.0.0",
-    ]
+CORS_ALLOW_METHODS = [
+    "GET",
+    "OPTIONS",
+    "PATCH",
+    "POST",
+    "PUT",
+]
+
+CORS_ORIGIN_ALLOW_ALL = True  # For now
+CORS_ALLOW_CREDENTIALS = True
+
+ROOT_URLCONF = "deadlockle.urls"
 
 TEMPLATES = [
     {
