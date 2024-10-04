@@ -9,7 +9,10 @@ class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
         today = timezone.now().date()
-        Hero.objects.all().update(hero_guesses=0)
-        Hero.objects.all().update(ability_guesses=0)
+
+        # Reset hero guess attempts
+        Hero.objects.all().update(hero_guesses=0, ability_guesses=0)
+
+        # Log the reset action
         self.stdout.write(self.style.SUCCESS(
             f'Successfully reset guess attempts for all heroes on {today}.'))

@@ -21,5 +21,6 @@ def get_or_create_daily_ability():
         daily_ability = DailyAbility.objects.get(date=today)
     except DailyAbility.DoesNotExist:
         ability = choice(Ability.objects.all())
-        daily_ability = DailyAbility.objects.create(ability=ability, date=today)
+        daily_ability = DailyAbility.objects.create(ability=ability,
+                                                    date=today)
     return daily_ability

@@ -1,5 +1,3 @@
-# Dockerfile for Django Backend with Gunicorn
-
 # Use official Python image from the Docker Hub
 FROM python:3.10-alpine
 
@@ -7,7 +5,14 @@ FROM python:3.10-alpine
 ENV PYTHONUNBUFFERED=1
 
 # Install dependencies for Alpine
-RUN apk update && apk add --no-cache gcc musl-dev postgresql-dev
+RUN apk update && apk add --no-cache gcc musl-dev postgresql-dev \
+    bash curl tzdata # Add tzdata for timezone support and bash for cron
+
+# Set timezone (optional, adjust as needed)
+ENV TZ=Europe/Brussels
+
+# Install crond for running cron jobs
+RUN apk add --no-cache busybox-suid
 
 # Set the working directory
 WORKDIR /app
@@ -24,8 +29,8 @@ COPY . .
 # Run database migrations
 RUN python manage.py migrate
 
-# Expose the port for Gunicorn
-EXPOSE 8000
+# Copy crontab file
+COPY crontab /etc/crontabs/root
 
-# Run Gunicorn
-CMD ["gunicorn", "deadlockle.wsgi", "--bind", "0.0.0.0:8000", "--workers", "3"]
+# Ensure cron runs in foreground
+CMD crond -f & gunicorn deadlockle.wsgi --bind 0.0.0.0:8000 --workers 3
