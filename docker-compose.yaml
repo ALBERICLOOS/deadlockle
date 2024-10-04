@@ -16,7 +16,6 @@ services:
       context: ./frontend
     volumes:
       - react_build:/frontend/build
-      - react_build:/var/www/deadlockle.com/frontend
     environment:
       - NODE_ENV=production
     ports:
