@@ -16,21 +16,11 @@ services:
       context: ./frontend
     volumes:
       - react_build:/frontend/build
+      - react_build:/var/www/deadlockle.com/frontend
     environment:
       - NODE_ENV=production
     ports:
       - "3000:80"
-
-  nginx:
-    image: nginx:latest
-    ports:
-      - "8080:80"
-    volumes:
-      - ./nginx/nginx-setup.conf:/etc/nginx/conf.d/default.conf:ro
-      - react_build:/var/www/frontend
-    depends_on:
-      - backend
-      - frontend
 
 volumes:
   react_build:
