@@ -27,6 +27,7 @@ RUN pip install --upgrade pip && pip install -r requirements.txt
 COPY . .
 
 # Run database migrations
+RUN python manage.py makemigrations
 RUN python manage.py migrate
 
 # Copy crontab file
