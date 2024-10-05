@@ -1,6 +1,6 @@
 import {AbilityGuessResponse, DailyAbility, Hero, HeroDetail, HeroGuessResponse} from "../types/Types";
 
-const url = "http://deadlockle.com/api/"
+const url = "https://deadlockle.com/api/"
 
 export async function fetchHeroes(): Promise<Hero[]> {
     try {
