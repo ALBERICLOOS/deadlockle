@@ -1,8 +1,10 @@
 import {AbilityGuessResponse, DailyAbility, Hero, HeroDetail, HeroGuessResponse} from "../types/Types";
 
+const url = "http://deadlockle.com/api/"
+
 export async function fetchHeroes(): Promise<Hero[]> {
     try {
-        const response = await fetch('http://127.0.0.1:8000/api/heroes/');
+        const response = await fetch(url + 'heroes/');
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
