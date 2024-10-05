@@ -17,7 +17,7 @@ export async function fetchHeroes(): Promise<Hero[]> {
 
 export async function submitAbilityGuess(hero: Hero): Promise<AbilityGuessResponse | null> {
     try {
-        const response = await fetch('http://127.0.0.1:8000/api/guess/ability/', {
+        const response = await fetch(url + 'guess/ability/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -33,7 +33,7 @@ export async function submitAbilityGuess(hero: Hero): Promise<AbilityGuessRespon
 
 export async function fetchDailAbility(): Promise<DailyAbility | null> {
     try {
-        const response = await fetch(`http://127.0.0.1:8000/api/daily/ability/`);
+        const response = await fetch(url + 'daily/ability/');
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -46,7 +46,7 @@ export async function fetchDailAbility(): Promise<DailyAbility | null> {
 
 export async function fetchHero(id: number): Promise<HeroDetail | null> {
     try {
-        const response = await fetch(`http://127.0.0.1:8000/api/heroes/${id}/`);
+        const response = await fetch(url + `heroes/${id}/`);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -59,7 +59,7 @@ export async function fetchHero(id: number): Promise<HeroDetail | null> {
 
 export async function submitHeroGuess(hero: Hero): Promise<HeroGuessResponse | null> {
     try {
-        const response = await fetch('http://127.0.0.1:8000/api/guess/hero/', {
+        const response = await fetch(url + 'guess/hero/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
