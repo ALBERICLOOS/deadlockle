@@ -21,13 +21,16 @@ WORKDIR /app
 COPY requirements.txt .
 
 # Install Python dependencies
+RUN touch db.sqlite3
 RUN pip install --upgrade pip && pip install -r requirements.txt
 
 # Copy the rest of the project files
 COPY . .
 
-# Run database migrations
-RUN python manage.py migrate
+# Reset the database, run migrations, and load initial data
+RUN python manage.py flush --no-input  # Flushes the database
+RUN python manage.py migrate  # Applies migrations
+RUN ./manage.py loaddata heroes.json && ./manage.py loaddata abilities.json  # Loads data
 
 # Copy crontab file
 COPY crontab /etc/crontabs/root
