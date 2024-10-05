@@ -34,3 +34,4 @@ services:
 
 volumes:
   react_build:
+
