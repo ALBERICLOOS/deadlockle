@@ -14,17 +14,13 @@ import {
 import PageHeader from "../components/PageHeader";
 import { useMediaQuery, useTheme } from '@mui/material';
 
-export function checkAndClearLocalStorage(key: string){
+export function checkAndClearLocalStorage(){
     const savedDate = localStorage.getItem(LOCAL_STORAGE_KEY_DATE);
     const currentDate = new Date().toISOString().split('T')[0];
 
     if (savedDate !== currentDate) {
-        if (key === LOCAL_STORAGE_KEY_HEROES){
-            localStorage.removeItem(LOCAL_STORAGE_KEY_HEROES);
-        }
-        else if (key === LOCAL_STORAGE_KEY_ABILITIES){
-            localStorage.removeItem(LOCAL_STORAGE_KEY_ABILITIES);
-        }
+        localStorage.removeItem(LOCAL_STORAGE_KEY_HEROES);
+        localStorage.removeItem(LOCAL_STORAGE_KEY_ABILITIES);
         localStorage.setItem(LOCAL_STORAGE_KEY_DATE, currentDate);
         localStorage.removeItem(LOCAL_STORAGE_ABILITY_SUCCESS)
         localStorage.removeItem(LOCAL_STORAGE_HERO_SUCCESS)
@@ -49,7 +45,7 @@ export default function Classic() {
     React.useEffect(() => {
         const fetchAndSetHeroes = async () => {
 
-            checkAndClearLocalStorage(LOCAL_STORAGE_KEY_HEROES);
+            checkAndClearLocalStorage();
 
             const heroes = await fetchHeroes();
             setHeroes(heroes);

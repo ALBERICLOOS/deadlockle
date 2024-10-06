@@ -29,7 +29,7 @@ export default function Ability() {
             const heroes = await fetchHeroes();
             setHeroes(heroes);
 
-            checkAndClearLocalStorage(LOCAL_STORAGE_KEY_ABILITIES);
+            checkAndClearLocalStorage();
             const savedAbilities = localStorage.getItem(LOCAL_STORAGE_KEY_ABILITIES);
             if (savedAbilities) {
                 const savedGuessedHeros = JSON.parse(savedAbilities);
