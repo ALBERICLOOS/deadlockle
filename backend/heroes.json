@@ -5,7 +5,7 @@
         "fields": {
             "name": "Abrams",
             "gender": "M",
-            "type": "Tank",
+            "type": "Bruiser",
             "release_year": 2024,
             "image": "heroes/abrams.jpg"
         }
@@ -16,7 +16,7 @@
         "fields": {
             "name": "Bebop",
             "gender": "M",
-            "type": "Support",
+            "type": "Playmaker",
             "release_year": 2024,
             "image": "heroes/bebop.jpg"
         }
@@ -26,8 +26,8 @@
         "pk": 3,
         "fields": {
             "name": "Dynamo",
-            "gender": "F",
-            "type": "Damage",
+            "gender": "M",
+            "type": "Support",
             "release_year": 2024,
             "image": "heroes/dynamo.jpg"
         }
@@ -38,7 +38,7 @@
         "fields": {
             "name": "Grey Talon",
             "gender": "M",
-            "type": "Tank",
+            "type": "Long Range Damage",
             "release_year": 2024,
             "image": "heroes/grey_talon.jpg"
         }
@@ -49,7 +49,7 @@
         "fields": {
             "name": "Haze",
             "gender": "F",
-            "type": "Damage",
+            "type": "Damage Per Second",
             "release_year": 2024,
             "image": "heroes/haze.jpg"
         }
@@ -60,7 +60,7 @@
         "fields": {
             "name": "Infernus",
             "gender": "M",
-            "type": "Damage",
+            "type": "Damage Over Time",
             "release_year": 2024,
             "image": "heroes/infernus.jpg"
         }
@@ -82,7 +82,7 @@
         "fields": {
             "name": "Kelvin",
             "gender": "M",
-            "type": "Tank",
+            "type": "Support",
             "release_year": 2024,
             "image": "heroes/kelvin.jpg"
         }
@@ -93,7 +93,7 @@
         "fields": {
             "name": "Lady Geist",
             "gender": "F",
-            "type": "Support",
+            "type": "Damage Per Second",
             "release_year": 2024,
             "image": "heroes/lady_geist.jpg"
         }
@@ -104,7 +104,7 @@
         "fields": {
             "name": "Lash",
             "gender": "M",
-            "type": "Damage",
+            "type": "Bruiser",
             "release_year": 2024,
             "image": "heroes/lash.jpg"
         }
@@ -114,8 +114,8 @@
         "pk": 11,
         "fields": {
             "name": "McGinnis",
-            "gender": "M",
-            "type": "Tank",
+            "gender": "F",
+            "type": "Support",
             "release_year": 2024,
             "image": "heroes/mcginnis.jpg"
         }
@@ -125,8 +125,8 @@
         "pk": 12,
         "fields": {
             "name": "Mo & Krill",
-            "gender": "F",
-            "type": "Support",
+            "gender": "X",
+            "type": "Playmaker",
             "release_year": 2024,
             "image": "heroes/mo_krill.jpg"
         }
@@ -136,8 +136,8 @@
         "pk": 13,
         "fields": {
             "name": "Paradox",
-            "gender": "M",
-            "type": "Damage",
+            "gender": "F",
+            "type": "Playmaker",
             "release_year": 2024,
             "image": "heroes/paradox.jpg"
         }
@@ -147,8 +147,8 @@
         "pk": 14,
         "fields": {
             "name": "Pocket",
-            "gender": "F",
-            "type": "Support",
+            "gender": "M",
+            "type": "Damage Per Second",
             "release_year": 2024,
             "image": "heroes/pocket.jpg"
         }
@@ -159,7 +159,7 @@
         "fields": {
             "name": "Seven",
             "gender": "M",
-            "type": "Damage",
+            "type": "Damage Per Second",
             "release_year": 2024,
             "image": "heroes/seven.jpg"
         }
@@ -169,8 +169,8 @@
         "pk": 16,
         "fields": {
             "name": "Shiv",
-            "gender": "F",
-            "type": "Damage",
+            "gender": "M",
+            "type": "Damage Per Second",
             "release_year": 2024,
             "image": "heroes/shiv.jpg"
         }
@@ -180,8 +180,8 @@
         "pk": 17,
         "fields": {
             "name": "Vindicta",
-            "gender": "M",
-            "type": "Tank",
+            "gender": "F",
+            "type": "Long Range Damage",
             "release_year": 2024,
             "image": "heroes/vindicta.jpg"
         }
@@ -191,7 +191,7 @@
         "pk": 18,
         "fields": {
             "name": "Viscous",
-            "gender": "F",
+            "gender": "M",
             "type": "Support",
             "release_year": 2024,
             "image": "heroes/viscous.jpg"
@@ -203,7 +203,7 @@
         "fields": {
             "name": "Warden",
             "gender": "M",
-            "type": "Tank",
+            "type": "Damage Per Second",
             "release_year": 2024,
             "image": "heroes/warden.jpg"
         }
@@ -214,7 +214,7 @@
         "fields": {
             "name": "Wraith",
             "gender": "F",
-            "type": "Damage",
+            "type": "Damage Per Second",
             "release_year": 2024,
             "image": "heroes/wraith.jpg"
         }
@@ -224,8 +224,8 @@
         "pk": 21,
         "fields": {
             "name": "Yamato",
-            "gender": "M",
-            "type": "Tank",
+            "gender": "F",
+            "type": "Damage Per Second",
             "release_year": 2024,
             "image": "heroes/yamato.jpg"
         }
