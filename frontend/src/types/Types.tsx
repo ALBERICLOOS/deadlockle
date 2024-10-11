@@ -2,7 +2,7 @@ export type HeroDetail = {
     id: number;
     name: string;
     gender: "M" | "F" | "X";
-    type: "Tank" | "DPS" | "Support";
+    type: "Bruiser" | "Playmaker" | "Support" | "Long Range Damage" | "Damage Per Second" | "Damage Over Time";
     release_year: number;
     image: string;
 }
@@ -42,7 +42,7 @@ export type HeroGuess = {
     name_guess: boolean;
     gender: "M" | "F" | "X";
     gender_guess: boolean;
-    type: "Tank" | "DPS" | "Support";
+    type: "Bruiser" | "Playmaker" | "Support" | "Long Range Damage" | "Damage Per Second" | "Damage Over Time";
     type_guess: boolean;
     release_year: number;
     release_year_guess: boolean;
