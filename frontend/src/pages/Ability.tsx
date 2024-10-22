@@ -1,11 +1,12 @@
 import {DailyAbility, AbilityGuess, Hero} from "../types/Types";
-import React from "react";
+import React, {useRef} from "react";
 import Box from "@mui/material/Box";
 import {AbilityContainer} from "../components/Tile";
 import {checkAndClearLocalStorage} from "./Classic";
 import {fetchDailAbility, fetchHeroes, submitAbilityGuess} from "../api/Api";
 import {LOCAL_STORAGE_ABILITY_SUCCESS, LOCAL_STORAGE_KEY_ABILITIES} from "../constants";
 import PageHeader from "../components/PageHeader";
+import SuccessScreen from "../components/SuccesScreen";
 
 /*
 LOCAL STORAGE:
@@ -55,6 +56,15 @@ export default function Ability() {
         };
         fetchAndSetDailyAbility();
     }, []);
+
+    const scrollRef = useRef<HTMLDivElement>(null);
+    React.useEffect(() => {
+        // Scroll to the reference when a hero is found
+        if (found && scrollRef.current) {
+            console.log("scrolling")
+            scrollRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+    }, [found]);
 
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
@@ -114,6 +124,9 @@ export default function Ability() {
                 {guessedHeros.map((guess, index) => (
                     <AbilityContainer key={guess.hero_id} image={guess.image} guess={guess.ability} name={guess.hero_name} guessCount={guess.total_guesses} animate={index === 0} />
                 ))}
+                {found && (
+                    <SuccessScreen found={found} scrollRef={scrollRef} amount_of_tries={guessedHeros.length} amount_of_people={guessedHeros[0].total_guesses}/>
+                )}
             </Box>
         </Box>
 

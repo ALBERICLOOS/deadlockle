@@ -23,11 +23,9 @@ export default function PageHeader(props: {title: string, found: boolean, heroes
                 src={"data:image/jpeg;base64," + props.image}
                 className="image-style"
             />}
-            {!props.found ?
+            {!props.found &&
                 <SelectHero heroes={props.heroes} handleSubmit={props.handleSubmit}
                             setSelectedHero={props.setSelectedHero} resetKey={props.resetKey} />
-                :
-                <SuccesScreen found={props.found} />
             }
         </Box>
     )

@@ -1,5 +1,5 @@
 import {HeroGuess, Hero} from "../types/Types";
-import React from "react";
+import React, {useRef} from "react";
 import Box from "@mui/material/Box";
 import TileContainer from "../components/Tile";
 import {fetchHero, fetchHeroes, submitHeroGuess} from "../api/Api";
@@ -13,6 +13,7 @@ import {
 } from "../constants";
 import PageHeader from "../components/PageHeader";
 import { useMediaQuery, useTheme } from '@mui/material';
+import SuccessScreen from "../components/SuccesScreen";
 
 export function checkAndClearLocalStorage(){
     const savedDate = localStorage.getItem(LOCAL_STORAGE_KEY_DATE);
@@ -71,6 +72,15 @@ export default function Classic() {
 
         fetchAndSetHeroes();
     }, []);
+
+    const scrollRef = useRef<HTMLDivElement>(null);
+    React.useEffect(() => {
+        // Scroll to the reference when a hero is found
+        if (found && scrollRef.current) {
+            console.log("scrolling")
+            scrollRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+    }, [found]);
 
 
     const handleSubmit = async (event: React.FormEvent) => {
@@ -168,7 +178,11 @@ export default function Classic() {
                         ]}
                     />
                 ))}
+                {found && (
+                    <SuccessScreen found={found} scrollRef={scrollRef} amount_of_tries={guessedHeros.length} amount_of_people={guessedHeros[0].total_guesses}/>
+                )}
             </Box>
+
         </Box>
 
     );

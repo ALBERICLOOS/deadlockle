@@ -25,7 +25,7 @@ const LogoContainer = styled(Box)(({ theme }) => ({
     backgroundColor: '#1a1a1a',
 }));
 
-const StyledLink = styled(Link)(({ theme }) => ({
+export const StyledLink = styled(Link)(({ theme }) => ({
     textDecoration: 'none', // Remove underline from links
     fontFamily: '"Orbitron", sans-serif',
     color: '#fff',
