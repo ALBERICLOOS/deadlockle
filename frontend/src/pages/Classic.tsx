@@ -71,13 +71,12 @@ export default function Classic() {
         };
 
         fetchAndSetHeroes();
-    }, []);
+    }, [found]);
 
     const scrollRef = useRef<HTMLDivElement>(null);
     React.useEffect(() => {
         // Scroll to the reference when a hero is found
         if (found && scrollRef.current) {
-            console.log("scrolling")
             scrollRef.current.scrollIntoView({ behavior: 'smooth' });
         }
     }, [found]);

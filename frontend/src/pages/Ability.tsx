@@ -55,7 +55,7 @@ export default function Ability() {
 
         };
         fetchAndSetDailyAbility();
-    }, []);
+    }, [found]);
 
     const scrollRef = useRef<HTMLDivElement>(null);
     React.useEffect(() => {
